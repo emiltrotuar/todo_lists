@@ -1,8 +1,13 @@
 TodoLists::Application.routes.draw do
-  match '/signup',  to: 'users#new'
-  match '/show',    to: 'users#show'
-  match '/edit',    to: 'users#edit'
 
+  resources :users
+  root to: 'static_pages#home'
+  match '/home',    to: 'static_pages#home'
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/sessions',  to: 'sessions#create'
+  match '/signout', to: 'sessions#destroy', via: :delete
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
