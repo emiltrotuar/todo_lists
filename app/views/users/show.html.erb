@@ -13,4 +13,13 @@
 		<td>row 2, cell 1</td>
 		<td>row 2, cell 2</td>
 	</tr>
+	<div class="span8">
+    <% if @user.tasks.any? %>
+      <h3>Tasks (<%= @user.tasks.count %>)</h3>
+      <ol class="tasks">
+        <%= render @tasks %>
+      </ol>
+      <%= will_paginate @tasks %>
+    <% end %>
+  </div>
 </table>
