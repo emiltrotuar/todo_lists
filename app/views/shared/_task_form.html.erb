@@ -3,5 +3,9 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose new task..." %>
   </div>
-  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+  <div id="button_ajax">
+  	<%= f.submit "Add task", class: "btn btn-large btn-primary" %>
+  	<input class="btn btn-large btn-primary" type="button" id="check_button" value="1">
+  	<input class="btn btn-large btn-primary" type="button" id="tara_kender" value="2">
+  </div>
 <% end %>

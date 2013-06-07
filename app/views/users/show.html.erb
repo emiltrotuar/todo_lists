@@ -1,25 +1,5 @@
 <% provide(:title, @user.name) %>
 <h1>SIMPLE TODO LISTS</h1>
-<table border="1">
-	<tr>
-		<th>Header 1</th>
-		<th>Header 2</th>
-	</tr>
-	<tr>
-		<td>row 1, cell 1</td>
-		<td>row 1, cell 2</td>
-	</tr>
-	<tr>
-		<td>row 2, cell 1</td>
-		<td>row 2, cell 2</td>
-	</tr>
-	<div class="span8">
-    <% if @user.tasks.any? %>
-      <h3>Tasks (<%= @user.tasks.count %>)</h3>
-      <ol class="tasks">
-        <%= render @tasks %>
-      </ol>
-      <%= will_paginate @tasks %>
-    <% end %>
-  </div>
-</table>
+<h2><%= @user.name %></h2>
+<h2><%= @user.email %></h2>
+
