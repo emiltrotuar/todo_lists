@@ -3,38 +3,39 @@ class TasksController < ApplicationController
   before_filter :correct_user,   only: :destroy
 
   def index
-  end
-
-  def create
-    debugger
-    @task = current_user.tasks.build(params[:task])
-    if @task.save
-      flash[:success] = "Task created!"
-      redirect_to root_url
-    else
-      @feed_items = []
-      render 'static_pages/home'
+    if signed_in?
+      @incomplete_tasks = current_user.tasks.where(complete: false)
+      @complete_tasks = current_user.tasks.where(complete: true)
     end
   end
 
-  def edit
-    @task = Task.find(params["id"])
+  def new
+    @task = Task.new
+  end
+
+  def create
+    @task = current_user.tasks.create!(params[:task])
+    respond_to do |format|
+      format.html {redirect_to tasks_url}
+      format.js
+    end
   end
 
   def update
     @task = Task.find(params[:id])
-    if @task.update_attributes(params[:task])
-      flash[:success] = "Task updated"
-      redirect_to root_url
-    else
-      @feed_items = []
-      render 'static_pages/home'
-    end
+    @task.update_attributes!(params[:task])
+    respond_to do |format|
+       format.html {redirect_to tasks_url}
+       format.js
+     end
   end
 
   def destroy
-    @task.destroy
-    redirect_to root_url
+    @task = Task.destroy(params[:id])
+    respond_to do |format|
+         format.html { redirect_to tasks_url }
+         format.js
+    end
   end
 
    private

@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content,:complete
   belongs_to :user
 
   validates :user_id, presence: true

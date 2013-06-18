@@ -1,10 +1,9 @@
 TodoLists::Application.routes.draw do
   resources :tasks
-  resources :users do
-    resources :tasks
-  end
+  resources :users
+  
   resources :sessions,   only: [:new, :create, :destroy]
-  root to: 'static_pages#home'
+  root to: 'tasks#index'
   match '/home',    to: 'static_pages#home'
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
