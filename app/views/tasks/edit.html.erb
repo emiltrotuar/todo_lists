@@ -1,6 +1,10 @@
 <h1>Edit task</h1>
-<%= form_for(@task) do |t| %>
-  <%= t.label :content %>
-  <%= t.text_area :content %>
-  <%= t.submit "Save changes", class: "btn btn-large btn-primary" %>
-<% end %>
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@task) do |t| %>
+		<%= t.label :content %>
+		<%= t.text_area :content %>
+		<%= t.submit "Save changes" %>
+		<% end %>
+	</div>
+</div>

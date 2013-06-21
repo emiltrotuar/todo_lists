@@ -184,6 +184,7 @@ aside {
 
 /* forms */
 
+
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -229,7 +230,7 @@ input {
 .tasks {
   list-style: none;
   margin: 10px 0 0 0;
-  
+  display: inline-block;
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
