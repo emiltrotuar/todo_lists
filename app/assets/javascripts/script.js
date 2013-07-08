@@ -10,4 +10,14 @@ jQuery.fn.submitOnCheck = function(){
 
 $(function() {
 	$('.edit_task').submitOnCheck();
-});
+	$('.edit_task').mouseenter(
+		function () {
+			$(this).css( "background-color", "#FFFFCC" );
+			var tmp = $(this).attr( "id" );
+			var lnk = $('#'+tmp).find('a').show();
+		}
+		).mouseleave(function(){
+			$(this).css( "background-color", "inherit" );
+			$(this).find('a').hide();
+		});
+	});
