@@ -1,16 +1,19 @@
 <% if signed_in? %>
 
-	<%= link_to "New Task", new_task_path, id: "new_link", remote: true %>
-
-	<h2>Incomplete Tasks</h2>
-	<div class="tasks" id="incomplete_tasks">
-	  <%= render @incomplete_tasks %>
+	<h1>SIMPLE TODO LISTS</h1>
+	<div class="projects">
+		<div class="controls input-append">
+			<%= link_to image_tag("plus.png") %>
+			<input type="text" id="inputWarning" placeholder="Start typing here to create task...">
+			<button id="addbutt" class="btn btn-success" type="button">
+				Add task
+			</button>
+		</div>
+		<div class="tasks">
+		     <%= render @tasks %>
+		</div>
 	</div>
 
-	<h2>Complete Tasks</h2>
-	<div class="tasks" id="complete_tasks">
-	  <%= render @complete_tasks %>
-	</div>
 <% else %>
 	<div class="center hero-unit">
     <h1>Welcome to the Todo Lists</h1>

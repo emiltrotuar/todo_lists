@@ -4,8 +4,7 @@ class TasksController < ApplicationController
 
   def index
     if signed_in?
-      @incomplete_tasks = current_user.tasks.where(complete: false)
-      @complete_tasks = current_user.tasks.where(complete: true)
+      @tasks = Project.find(1).tasks
     end
   end
 
@@ -49,7 +48,7 @@ class TasksController < ApplicationController
    private
 
     def correct_user
-      @task = current_user.tasks.find_by_id(params[:id])
+      @task = Project.find(1).tasks.find_by_id(params[:id])
       redirect_to root_url if @task.nil?
     end
 end

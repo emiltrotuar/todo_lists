@@ -1,0 +1,29 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#projects {
+	border-style: solid;
+	border-color: green;
+}
+
+.prj1 {
+	border-style: solid;
+	border-color: red;
+	margin: 5px;
+	width: 410px;
+	left: 30%
+}
+
+.controls {
+	display: inline-block;
+}
+
+table {
+	background: white; 
+	color: white
+}
+
+td {
+	background: #E5E4E2
+}
