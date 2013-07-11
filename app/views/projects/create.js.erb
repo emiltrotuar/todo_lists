@@ -1,4 +1,4 @@
 $('#new_project').remove();
-$('#new_link').show();
+$('#new_project_link').show();
 $('#projects').append('<%= j render(@project) %>');
 $('#edit_project_<%= @project.id %>').submitOnCheck();

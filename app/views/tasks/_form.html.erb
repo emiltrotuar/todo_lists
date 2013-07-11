@@ -1,5 +1,21 @@
-<%= form_for task, remote: true do |f| %>
-  <%= f.check_box :complete, class: "new_class" %>
-  <%= f.label :complete, task.content, class: "new_class" %>
-  <%= link_to "(remove)", task,  method: :delete, style: "display: none", class: "new_class" %>
+<%= form_for @task, remote: true do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

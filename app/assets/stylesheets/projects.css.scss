@@ -5,9 +5,15 @@
 #projects {
 	border-style: solid;
 	border-color: green;
+	position: relative;
+	padding: 10px
 }
 
-.prj1 {
+#new_project_link {
+	margin: 5px;
+}
+.prj {
+	display: inline-block;
 	border-style: solid;
 	border-color: red;
 	margin: 5px;

@@ -1,17 +1,10 @@
 <% if signed_in? %>
 	<h1>SIMPLE TODO LISTS</h1>
 	<div id="projects">
-		<div class="prj1">
-			<h4><%= @project.name %></h4> 
-			<div class="controls input-append">
-				<%= link_to image_tag("plus.png") %>
-				<input type="text" placeholder="Start typing here to create task...">
-				<button type="button" class="btn btn-success">Add task</button>
-			</div>
-			<%= render @tasks %>
-		</div>
+		<%= render @projects %>
+	<div align="center">
+	  <%= link_to "New Project", new_project_path, id: "new_project_link", remote: true, class: "btn btn-large btn-primary" %>
 	</div>
-	<%= link_to "New Project", new_project_path, id: "new_link", remote: true %>
 <% else %>
 	<div class="center hero-unit">
 		<h1>Welcome to the Todo Lists</h1>

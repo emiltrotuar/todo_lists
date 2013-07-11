@@ -1,11 +1,3 @@
-jQuery.fn.submitOnCheck = function(){
-	this.find('input[type=submit]').remove();
-	this.find('input[type=checkbox]').click(function() {
-		$(this).parent('form').submit();
-	});
-	return this;
-}
-
 function btn_view(e) {
 	$(e).parent().parent().hide('slow');
 }
@@ -24,10 +16,6 @@ $(function() {
 		$('.btn-small').last().addClass("buts"+i);
 		i++;
 	});
-	$('btn-small').click(function() {
-		document.find('button').remove();
-	});
-	$('.edit_task').submitOnCheck();
 	$('.edit_task').mouseenter(
 		function () {
 			$(this).css( "background-color", "#FFFFCC" );

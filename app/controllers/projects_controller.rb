@@ -4,9 +4,8 @@ class ProjectsController < ApplicationController
 
   def index
     if signed_in?
-      @project = Project.find(1)
       @projects = current_user.projects
-      @tasks = Project.find(1).tasks
+      @tasks = Task.all
     end
   end
 
