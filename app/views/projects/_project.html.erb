@@ -6,14 +6,14 @@
 	<div class="controls input-append">
 		<%= form_for project.tasks.new, remote: true do |f| %>
 		  <input type="hidden" name="prj_id" value="<%= project.id %>" />
-			<%= link_to image_tag("plus.png") %>
+			<%= image_tag "plus.png", :size => "26x26", :border => 0 %>
 			<%= f.text_field :content, style: "width: 280px" %>
 			<%= f.submit "Add task", class: "btn btn-success" %>
 		<% end %>
   </div>
-  <div id="incomplete_tasks">
+  <div id="task_list_<%= project.id %>">
   	<% if Project.find(project.id).tasks.empty? %>
-			<%= render text: "no records" %>
+			<p id="no_recs_<%= project.id %>">no records</p>
 		<% else %>
 		  <%= render project.tasks %>
 		<% end %>

@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy]
 
-  def show
-    @task = current_user.tasks.find(params[:id])
-  end
-
   def edit
     @task = Task.find(params[:id])
   end

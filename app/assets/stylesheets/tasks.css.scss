@@ -6,6 +6,19 @@
 	display: inline-block;
 }
 
+.lab_align {
+	position: relative;
+	margin-bottom: 0px;
+}
+
 #complete_tasks {
-	color: blue;
+	color: #AEFBDC;
+}
+
+#incomplete_tasks {
+	color: #9BA8E1;
+}
+
+#reorder {
+	
 }
