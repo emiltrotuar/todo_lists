@@ -29,3 +29,40 @@ form {
 .controls {
 	display: inline-block;
 }
+
+table {
+	color: white;
+}
+
+td {
+	background: #E5E4E2;
+}
+
+.span9 {
+	margin-left: 0px;
+}
+
+.tasks {
+	margin-bottom: 8px;
+}
+
+#ed_prj:hover, #del_prj:hover {
+	cursor: pointer;
+}
+
+#del_prj {
+	margin-right: 44px
+}
+
+#draggable {
+	width: auto;
+	height: auto;
+	background: #ccc;
+	padding: 4px;
+	border-radius: 5px;
+}
+
+#prj_actions {
+	height: 25px;
+	margin-bottom: 10px;
+}

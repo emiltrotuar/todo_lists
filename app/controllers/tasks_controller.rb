@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy]
 
-  def edit
-    @task = Task.find(params[:id])
-  end
-
   def new
     @task = Task.new
   end
@@ -15,6 +11,10 @@ class TasksController < ApplicationController
       format.html {redirect_to tasks_url}
       format.js
     end
+  end
+
+  def edit
+    @task = Task.find(params[:id])
   end
 
   def update
