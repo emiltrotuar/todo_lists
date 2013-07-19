@@ -1,36 +1,24 @@
-<div class="prj">
-	<p>
-		<h4 class="new_class"><%= project.name %></h4> 
-		<%= link_to " remove ", project,  method: :delete, class: "new_class" %>
-	</p>
-	<div class="controls input-append">
+<div class="draggable" class="span9">
+	<div id="prj_actions">
+		<p id="name" style="display: inline-block"><%= project.name %></p>
+		<%= link_to image_tag("edit.png", :size => "12x12", :border => 0), id: "ed_prj" %>
+		<%= link_to image_tag("del.png", :size => "18x18", :border => 0), id: "del_prj" %>
+	</div>
+	<div id="input-set" class="controls input-append">
 		<%= form_for project.tasks.new, remote: true do |f| %>
-		<input type="hidden" name="prj_id" value="<%= project.id %>" />
-		<%= image_tag "plus.png", :size => "26x26", :border => 0 %>
-		<%= f.text_field :content, style: "width: 280px" %>
-		<%= f.submit "Add task", class: "btn btn-success" %>
+			<input type="hidden" name="prj_id" value="<%= project.id %>" />
+			<%= link_to image_tag("plus.png", :size => "28x28", :border => 0) %>
+			<%= f.text_field :content, class: "task_input", placeholder: "Start typing here to create task..." %>
+			<%= f.submit "Add task", class: "addbutt btn btn-success", onclick: "subm_form(this)" %>
 		<% end %>
 	</div>
-	<div id="task_list_<%= project.id %>">
+	<div id="task_list_<%= project.id %>" width="auto">
 		<% if Project.find(project.id).tasks.empty? %>
 		<p id="no_recs_<%= project.id %>">no records</p>
 		<% else %>
-		<%= render project.tasks %>
+		<table border="1" cellpadding="1" class="table-hover">
+			<%= render project.tasks %>
+		</table>
 		<% end %>
 	</div>
-	<div id="draggable" class="span9">
-	<div id="prj_actions">
-		<p id="name" style="display: inline-block"><%= project.name %></p>
-		<img id="ed_prj" src="edit.png" width="12px" height="12px">
-		<img id="del_prj" src="del.png" width="18px" height="18px">
-	</div>
-	<div id="input-set" class="controls input-append">
-		<img src="plus.png" alt="" width="28px" height="28px">
-		<input type="text" id="task_input" placeholder="Start typing here to create task...">
-		<button id="addbutt" class="btn btn-success" type="button">Add task</button>
-	</div>
-	<div class="tasks" align="center">
-		<table border="1" cellpadding="1"><tbody></tbody></table>
-	</div>
-</div>
 </div>

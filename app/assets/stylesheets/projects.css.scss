@@ -6,7 +6,7 @@
 	border-style: solid;
 	border-color: green;
 	position: relative;
-	padding: 10px
+	padding: 10px;
 }
 
 #new_project_link {
@@ -14,7 +14,7 @@
 }
 
 form {
-	margin: 1px
+	margin: 1px;
 }
 
 .prj {
@@ -51,15 +51,17 @@ td {
 }
 
 #del_prj {
-	margin-right: 44px
+	margin-right: 44px;
 }
 
-#draggable {
+.draggable {
+	display: inline-block;
 	width: auto;
 	height: auto;
 	background: #ccc;
 	padding: 4px;
 	border-radius: 5px;
+	margin: 5px;
 }
 
 #prj_actions {

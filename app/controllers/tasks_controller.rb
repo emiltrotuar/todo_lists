@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def create
     @task = Project.find(params[:prj_id]).tasks.create!(params[:task])
     respond_to do |format|
-      format.html {redirect_to tasks_url}
+      format.html {redirect_to projects_url}
       format.js
     end
   end
@@ -21,9 +21,13 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.update_attributes!(params[:task])
     respond_to do |format|
-       format.html {redirect_to projects_url}
+       format.html { redirect_to projects_url }
        format.js
      end
+  end
+
+  def show
+    @task = Task.find(params[:id])
   end
 
   def destroy

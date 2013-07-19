@@ -1,2 +1,3 @@
 $('#no_recs_<%= @task.project_id %>').remove();
-$('#task_list_<%= @task.project_id %>').append('<%= j render(@task) %>');
+$('#task_list_<%= @task.project_id %> table tbody').append('<%= j render(@task) %>');
+$('#task_<%= @task.project.id %>').submitOnCheck();

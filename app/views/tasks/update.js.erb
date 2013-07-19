@@ -1,5 +1,0 @@
-<% if @task.complete? %>
-  $('#edit_task_<%= @task.id %>').removeClass('incomplete_tasks').addClass('complete_tasks');
-<% else %>
-  $('#edit_task_<%= @task.id %>').removeClass('complete_tasks').addClass('incomplete_tasks');
-<% end %>
