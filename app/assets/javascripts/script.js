@@ -1,25 +1,7 @@
 $(function() {
 	var i = 0;
 
-	$("input:checkbox").change(function() { 
-					var id = $(this).parent().parent().attr('id');
-					var re = /\d+/;
-							id = re.exec(id).toString();
-					alert(id);
-            if($(this).is(":checked")) { 
-                $.ajax({
-                    url: '/tasks/'+id,
-                    type: 'POST',
-                    data: { strID:$(this).attr("id"), strState:"1" }
-                });
-            } else {
-                $.ajax({
-                    url: '/tasks/'+id,
-                    type: 'POST',
-                    data: { strID:$(this).attr("id"), strState:"0" }
-                });
-            }
-        }); 
+	$('.edit_task').submitOnCheck();
 
 	$('#ed_prj').click(function(){ /* edit project name etc. */
 		var val = $('#name').html();
@@ -121,7 +103,7 @@ jQuery.del_task = function(e) {
 
 jQuery.fn.submitOnCheck = function(){
 	this.find('input[type=checkbox]').click(function() {
-		$(this).submit();
+		$(this).parent('form').submit();
 	});
 	return this;
 }

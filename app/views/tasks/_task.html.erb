@@ -1,10 +1,8 @@
 <tr id="task_<%= task.id %>">
 	<td width="10px">
-	<% if task.complete? %>
-		<input type="checkbox" checked>
-	<% else %>
-		<input type="checkbox">
-	<% end %>	
+		<%= form_for task, remote: true do |f| %>
+			<%= f.check_box :complete %>
+		<% end %>
 	</td>
 	<td width="auto">
 		<p><%= task.content %></p>
