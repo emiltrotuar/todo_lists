@@ -1,3 +1,4 @@
 $('#new_project').remove();
 $('#new_project_link').show();
 $('#projects').append('<%= j render(@project) %>');
+$('#task_content_<%= @project.id %>').val('').focus();

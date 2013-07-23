@@ -11,13 +11,21 @@ $(function() {
 		}
 		else {
 			var tmp = '<input type="text" id="ed_prj_inp" value="'+val+'">';
-			$('#prj_actions').prepend(tmp);
+			$('.prj_actions').prepend(tmp);
 			$('#ed_prj_inp').select();
 			$('#ed_prj, #name').hide();
 		}
 	});
 
-	$('#prj_actions').on('keypress', '#ed_prj_inp', function(event) { /* update project name etc. */
+	$('td').on('click', '.del_task', function(e) {
+		$(this).parent()
+					 .parent()
+					 .fadeOut('slow', function() { $(e).parent()
+																						 .parent()
+																						 .remove(); }); 
+	});
+
+	$('.prj_actions').on('keypress', '#ed_prj_inp', function(event) { /* update project name etc. */
 		if (event.keyCode === 13) {
 			var val = $('#ed_prj_inp').val();
 			var tmp = '<p id="name" style="display: inline-block">'+val+'</p>\
@@ -36,14 +44,13 @@ $(function() {
 		}
 	});
 
-	$('#del_prj').click(function(){
-		$(this).parent().parent().fadeOut('slow', function() { $(this).parent().parent().remove(); });
+	$(document).on('click', '.del_prj', function(){
+		$(this).closest('.draggable').fadeOut('slow', function() { this.closest('.draggable').remove(); });
 	});
 
-	$('.task_input').keypress(function(event) { /* on press enter */
+	$('.new_task').on('keypress', 'input[type=text]', function(event) { /* on press enter */
 		if (event.keyCode === 13) {
-			event.preventDefault();
-			AddTask();
+			this.parent().submit();
 		}
 	});
 
@@ -51,42 +58,11 @@ $(function() {
 
 	$('.draggable').draggable({ containment: "window" });
 
-	function AddTask(params) {
-		if ($('.task_input').val() === "") return;
-		else {
-			var task = $('.task_input').val();
-			$('table').append('<tr id="<%= project.id %>_<%= task.id %>"><td width="10px"><input type="checkbox"></td>\
-				<td width="205px">\
-				<p>'+task+'</p>\
-				</td>\
-				<td width="35px">\
-				<button class="btn btn-small btn-primary" type="button" onclick="edit_task(this)">edit</button>\
-				</td>\
-				<td width="35px">\
-				<button class="btn btn-small btn-primary" type="button" onclick="del_task(this)">delete</button>\
-				</td>	\
-				</tr>');
-			$('tr').last().addClass("tabr"+i).hide().fadeIn(500);
-			$('.btn-small').last().addClass("buts"+i);
-			$('.task_input').val('').focus();
-			i++;
-		}
-
-	}
+	$(document).on('click', '.del_prj', function () {
+    // deleteProject($(this).closest('.draggable')); 
+    deleteProject($(this).parent().parent().parent());
+  });
 });
-
-/*function subm_form(e) {
-	var dt = $(e).parent().serialize();
-	$.ajax({
-		url: "/tasks",
-		dataType: "html",
-		type: "post",
-		data: dt,
-		//success: function(){ alert(dt);},
-		error: function(){ alert("fuck");}
-	});
-	return false;
-}*/
 
 jQuery.fn.edit_task = function(e) {
 	var tmp = $(e).parent().parent().attr('class');
@@ -97,13 +73,26 @@ jQuery.fn.edit_task = function(e) {
 	$('.'+tmp+' td:nth-child(2)').append(tmp2);
 }
 
-jQuery.del_task = function(e) {
-	$(e).parent().parent().hide('slow', function() { $(e).parent().parent().remove(); });
-}
-
 jQuery.fn.submitOnCheck = function(){
 	this.find('input[type=checkbox]').click(function() {
 		$(this).parent('form').submit();
 	});
 	return this;
 }
+
+// function deleteProject(prj) {
+// 	$.ajax({
+// 		url: "/projects/destroy",
+// 		method: "post",
+// 		data: {"id": prj.attr('id')},
+// 		dataType: "json",
+// 		success: function(prj){
+// 			alert('ok');
+// 			prj.fadeOut('slow', function() {prj.remove()});
+// 		},
+// 		error: function() {
+// 			alert(prj.attr('id'))
+//       //alert("failed to delete item.");
+//     }
+//   });
+// }

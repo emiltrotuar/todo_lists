@@ -1,24 +1,24 @@
-<div class="draggable" class="span9">
-	<div id="prj_actions">
+<div id="<%= project.id %>" class="draggable" class="span9">
+	<div class="prj_actions">
 		<p id="name" style="display: inline-block"><%= project.name %></p>
-		<%= link_to image_tag("edit.png", :size => "12x12", :border => 0), id: "ed_prj" %>
-		<%= link_to image_tag("del.png", :size => "18x18", :border => 0), id: "del_prj" %>
+		<%= link_to image_tag("edit.png", :size => "12x12", :border => 0, :class=> "ed_prj") %>
+		<%= link_to image_tag("del.png", :size => "18x18", :border => 0), project, method: :delete, class: "del_prj" %>
 	</div>
 	<div id="input-set" class="controls input-append">
 		<%= form_for project.tasks.new, remote: true do |f| %>
-			<input type="hidden" name="prj_id" value="<%= project.id %>" />
-			<%= link_to image_tag("plus.png", :size => "28x28", :border => 0) %>
-			<%= f.text_field :content, class: "task_input", placeholder: "Start typing here to create task..." %>
-			<%= f.submit "Add task", class: "addbutt btn btn-success", onclick: "subm_form(this)" %>
+		<input type="hidden" name="prj_id" value="<%= project.id %>" />
+		<%= link_to image_tag("plus.png", :size => "28x28", :border => 0) %>
+		<%= f.text_field :content, class: "task_input", placeholder: "Start typing here to create task...", id: "task_content_#{project.id}" %>
+		<%= f.submit "Add task", class: "addbutt btn btn-success" %>
 		<% end %>
 	</div>
 	<div id="task_list_<%= project.id %>" width="auto">
 		<% if Project.find(project.id).tasks.empty? %>
-		<p id="no_recs_<%= project.id %>">no records</p>
+			<p id="no_recs_<%= project.id %>">no records</p>
 		<% else %>
-		<table border="1" cellpadding="1" class="table-hover">
-			<%= render project.tasks %>
-		</table>
+			<table border="1" cellpadding="1" class="table-hover">
+				<%= render project.tasks %>
+			</table>
 		<% end %>
 	</div>
 </div>

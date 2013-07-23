@@ -1,3 +1,15 @@
-$('#no_recs_<%= @task.project_id %>').remove();
-$('#task_list_<%= @task.project_id %> table tbody').append('<%= j render(@task) %>');
-$('#edit_task_<%= @task.id %>').submitOnCheck();
+if ($('#task_list_<%= @task.project_id %> table').length){
+	createNode();
+} else {
+	$('#task_list_<%= @task.project_id %>').append('<table border="1" cellpadding="1" class="table-hover"><tbody></tbody></table>');
+	$('#no_recs_<%= @task.project_id %>').remove();
+	createNode();
+}
+
+function createNode(){
+	var path =  '#task_list_<%= @task.project_id %> table tbody';
+	$(path).append('<%= j render(@task) %>');
+	$(path+" tr:last-child").hide().fadeIn(500);
+	$('#edit_task_<%= @task.id %>').submitOnCheck();
+	$('#task_content_<%= @task.project_id %>').val('').focus();
+}

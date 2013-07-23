@@ -33,23 +33,23 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.update_attributes!(params[:project])
     respond_to do |format|
-       format.html {redirect_to projects_url}
-       format.js
-     end
-  end
+     format.html {redirect_to projects_url}
+     format.js
+   end
+ end
 
-  def destroy
-    @project = Project.destroy(params[:id])
-    respond_to do |format|
-         format.html { redirect_to projects_url }
-         format.js
-    end
-  end
+ def destroy
+   @project = Project.destroy(params[:id])
+   respond_to do |format|
+     format.html { redirect_to projects_url }
+     format.js
+   end
+ end
 
-   private
+ private
 
-    def correct_user
-      @project = current_user.projects.find_by_id(params[:id])
-      redirect_to root_url if @project.nil?
-    end
+ def correct_user
+  @project = current_user.projects.find_by_id(params[:id])
+  redirect_to root_url if @project.nil?
+ end
 end
