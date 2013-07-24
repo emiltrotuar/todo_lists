@@ -1,0 +1,4 @@
+var id = '<%= @project.id %>';
+$('.ed_prj_'+id).hide().after('<%= j render("edit") %>');
+$('.ed_prj_'+id).prev('.name').hide();
+$('#edit_project_'+id).find('input').select();

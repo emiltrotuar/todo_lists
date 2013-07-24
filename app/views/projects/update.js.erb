@@ -1,5 +1,2 @@
-<% if @project.complete? %>
-  $('#edit_project_<%= @task.id %>').appendTo('#complete_tasks');
-<% else %>
-  $('#edit_project_<%= @task.id %>').appendTo('#incomplete_tasks');
-<% end %>
+$('#edit_project_<%= @project.id %>').remove();
+$('.ed_prj_<%= @project.id %>').show().prev('.name').show().html('<%= @project.name %>');

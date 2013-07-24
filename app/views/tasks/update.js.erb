@@ -1,0 +1,2 @@
+$('#edit_task_content_<%= @task.id %>').parent().remove();
+$('#task_content_<%= @task.id %>').show().html('<%= @task.content %>')

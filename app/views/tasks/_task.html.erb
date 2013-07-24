@@ -1,15 +1,17 @@
-<tr id="task_<%= task.id %>">
-	<td width="10px">
-		<%= form_for task, remote: true do |f| %>
+<% if !task.content.nil? %>
+	<tr id="task_<%= task.id %>">
+		<td width="10px">
+			<%= form_for task, remote: true do |f| %>
 			<%= f.check_box :complete %>
-		<% end %>
-	</td>
-	<td width="auto">
-		<p style="color:black"><%= task.content %></p>
-	</td>
-	<td width="80px" align="center">
-		<%= image_tag "arrows.png", id: "reorder", :size => "22x22", :border => 0 %>
-		<%= link_to image_tag("edit.png", :size => "16x16", :border => 0), "/tasks/#{task.id}/edit", style: "display: inline", remote: true %>
-		<%= link_to image_tag("del.png", :size => "24x24", :border => 0), task, method: :delete, style: "display: inline", class: "del_task" %>
-	</td>
-</tr>
+			<% end %>
+		</td>
+		<td width="auto">
+			<p id="task_content_<%= task.id %>" style="color:black"><%= task.content %></p>
+		</td>
+		<td width="80px" align="center">
+			<%= image_tag "arrows.png", id: "reorder", :size => "22x22", :border => 0 %>
+			<%= link_to image_tag("edit.png", :size => "16x16", :border => 0), edit_task_path(task), style: "display: inline", remote: true %>
+			<%= link_to image_tag("del.png", :size => "24x24", :border => 0), task, method: :delete, style: "display: inline", remote: true, class: "del_task" %>
+		</td>
+	</tr>
+<% end %>

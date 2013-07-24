@@ -1,1 +1,2 @@
-$('#edit_task_<%= @task.id %>').hide().after('<%= j render("edit_form")%>')
+$('#task_content_<%= @task.id %>').hide().after('<%= j render("edit") %>');
+$('#edit_task_content_<%= @task.id %>').select();

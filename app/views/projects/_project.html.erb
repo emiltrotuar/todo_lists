@@ -1,10 +1,10 @@
-<div id="<%= project.id %>" class="draggable" class="span9">
+<div class="draggable">
 	<div class="prj_actions">
-		<p id="name" style="display: inline-block"><%= project.name %></p>
-		<%= link_to image_tag("edit.png", :size => "12x12", :border => 0, :class=> "ed_prj") %>
-		<%= link_to image_tag("del.png", :size => "18x18", :border => 0), project, method: :delete, class: "del_prj" %>
+		<p class="name" style="display: inline-block"><%= project.name %></p>
+		<%= link_to image_tag("edit.png", :size => "12x12", :border => 0), edit_project_path(project), remote: true, class: "ed_prj_#{project.id}" %>
+		<%= link_to image_tag("del.png", :size => "18x18", :border => 0), project, method: :delete, remote: true, class: "del_prj" %>
 	</div>
-	<div id="input-set" class="controls input-append">
+	<div class="controls input-append">
 		<%= form_for project.tasks.new, remote: true do |f| %>
 		<input type="hidden" name="prj_id" value="<%= project.id %>" />
 		<%= link_to image_tag("plus.png", :size => "28x28", :border => 0) %>
