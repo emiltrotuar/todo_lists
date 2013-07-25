@@ -2,19 +2,53 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#projects {
-	border-style: solid;
-	border-color: green;
+.controls, input-prepend, input-append{
+	background-color: #C9C9C9;
+	margin-bottom: 0px;
+}
+
+.controls {
+	display: inline-block;
+}
+
+.del_prj {
 	position: relative;
-	padding: 10px;
+	float: right;
+	margin: 5px;
+}
+
+.draggable {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	background-color: #DCDCDC;
+	border-radius: 5px;
+	margin: 5px;
+}
+
+.ed_prj:hover, .prj_actions:hover, .del_prj:hover, tr:hover {
+	cursor: pointer;
+}
+
+.prj_actions a img:hover {
+	box-shadow: 0 0 10px #FFF300;
+}
+
+form {
+	display: inline-block;
+	margin: 1px;
+}
+
+.name {
+	color: white;
+}
+
+.new_task {
+	margin: 8px;
 }
 
 #new_project_link {
 	margin: 5px;
-}
-
-form {
-	margin: 1px;
 }
 
 .prj {
@@ -26,45 +60,70 @@ form {
 	left: 30%
 }
 
-.controls {
-	display: inline-block;
+.prj_actions {
+	height: 30px;
+	background-color: #4A5C9A;
+	margin-bottom: 0px;
 }
 
-table {
-	color: white;
+.prj_actions .name {
+	position: relative;
+	margin: 5px;
 }
 
-td {
-	background: #E5E4E2;
+.prj_actions img {
+	margin-left: 10px;
+}
+
+#projects {
+	border-style: solid;
+	border-color: green;
+	position: relative;
+	padding: 5px;
+}
+
+p {
+  font-size: 1.1em;
 }
 
 .span9 {
 	margin-left: 0px;
 }
 
+table {
+  table-layout: inherit;
+	border: 0px; 
+  width: 100%;
+}
+
+td {
+	word-wrap: break-word;
+}
+
+td input[type=checkbox] {
+	position: relative;
+	margin-bottom: 5px;
+}
+
+td p {
+	display: inline;
+	position: relative;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+tr { border-top: 1px solid #B7BAC1; }
+tr + tr { border-top: 1px solid #B7BAC1; }
+td + td { border-left: 1px solid #B7BAC1; }
+
 .tasks {
 	margin-bottom: 8px;
 }
 
-.ed_prj:hover, .del_prj:hover {
-	cursor: pointer;
-}
-
-.del_prj {
-	margin-right: 44px;
-}
-
-.draggable {
-	display: inline-block;
+.task_input {
 	width: auto;
-	height: auto;
-	background: #ccc;
-	padding: 4px;
-	border-radius: 5px;
-	margin: 5px;
 }
 
-.prj_actions {
-	height: 25px;
-	margin-bottom: 10px;
+.unfold {
+	height: 27px !important;	
 }

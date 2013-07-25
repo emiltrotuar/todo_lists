@@ -1,22 +1,23 @@
 <div class="draggable">
 	<div class="prj_actions">
+		<%= image_tag "notepad.png", :size => "12x12", :border => 0 %>
 		<p class="name" style="display: inline-block"><%= project.name %></p>
-		<%= link_to image_tag("edit.png", :size => "12x12", :border => 0), edit_project_path(project), remote: true, class: "ed_prj_#{project.id}" %>
-		<%= link_to image_tag("del.png", :size => "18x18", :border => 0), project, method: :delete, remote: true, class: "del_prj" %>
+		<%= link_to image_tag("edit.png", :size => "14x14", :border => 0), edit_project_path(project), remote: true, id: "ed_prj_#{project.id}", class: "ed_prj" %>
+		<%= link_to image_tag("del.png", :size => "14x14", :border => 0), project, method: :delete, remote: true, class: "del_prj" %>
 	</div>
-	<div class="controls input-append">
+	<div class="controls input-prepend input-append">
 		<%= form_for project.tasks.new, remote: true do |f| %>
-		<input type="hidden" name="prj_id" value="<%= project.id %>" />
-		<%= link_to image_tag("plus.png", :size => "28x28", :border => 0) %>
-		<%= f.text_field :content, class: "task_input", placeholder: "Start typing here to create task...", id: "task_content_#{project.id}" %>
-		<%= f.submit "Add task", class: "addbutt btn btn-success" %>
+			<input type="hidden" name="prj_id" value="<%= project.id %>" />
+			<button class="unfold btn btn-info"><i class="icon-plus-sign"></i></button>
+			<%= f.text_field :content, class: "task_input", placeholder: "Start typing here to create task...", id: "task_content_#{project.id}" %>
+			<%= f.submit "Add task", class: "addbutt btn btn-success" %>
 		<% end %>
 	</div>
-	<div id="task_list_<%= project.id %>" width="auto">
+	<div class="task_list" id="task_list_<%= project.id %>" width="auto">
 		<% if Project.find(project.id).tasks.empty? %>
 			<p id="no_recs_<%= project.id %>">no records</p>
 		<% else %>
-			<table border="1" cellpadding="1" class="table-hover">
+			<table cellpadding="1" class="table-hover">
 				<%= render project.tasks %>
 			</table>
 		<% end %>
