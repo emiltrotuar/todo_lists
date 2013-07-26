@@ -7,10 +7,6 @@
 	margin-bottom: 0px;
 }
 
-.controls {
-	display: inline-block;
-}
-
 .del_prj {
 	position: relative;
 	float: right;
@@ -19,7 +15,7 @@
 
 .draggable {
 	display: inline-block;
-	width: auto;
+	width: 390px;
 	height: auto;
 	background-color: #DCDCDC;
 	border-radius: 5px;
@@ -30,17 +26,17 @@
 	cursor: pointer;
 }
 
-.prj_actions a img:hover {
-	box-shadow: 0 0 10px #FFF300;
-}
-
 form {
 	display: inline-block;
 	margin: 1px;
 }
 
-.name {
-	color: white;
+img {
+	opacity: .3;
+}
+
+img:hover {
+	opacity: 1;
 }
 
 .new_task {
@@ -51,15 +47,6 @@ form {
 	margin: 5px;
 }
 
-.prj {
-	display: inline-block;
-	border-style: solid;
-	border-color: red;
-	margin: 5px;
-	width: 410px;
-	left: 30%
-}
-
 .prj_actions {
 	height: 30px;
 	background-color: #4A5C9A;
@@ -68,11 +55,16 @@ form {
 
 .prj_actions .name {
 	position: relative;
-	margin: 5px;
+	margin: 5px 5px 5px 25px;
+	color: white;
 }
 
-.prj_actions img {
+.prj_actions > img {
 	margin-left: 10px;
+}
+
+.prj_actions img:last-child {
+	margin-right: 5px;
 }
 
 #projects {
@@ -96,8 +88,9 @@ table {
   width: 100%;
 }
 
-td {
+td:nth-child(2) {
 	word-wrap: break-word;
+	padding-left: 10px;
 }
 
 td input[type=checkbox] {
@@ -108,7 +101,6 @@ td input[type=checkbox] {
 td p {
 	display: inline;
 	position: relative;
-	margin-left: 10px;
 	vertical-align: middle;
 }
 

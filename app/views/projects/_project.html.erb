@@ -2,8 +2,8 @@
 	<div class="prj_actions">
 		<%= image_tag "notepad.png", :size => "12x12", :border => 0 %>
 		<p class="name" style="display: inline-block"><%= project.name %></p>
-		<%= link_to image_tag("edit.png", :size => "14x14", :border => 0), edit_project_path(project), remote: true, id: "ed_prj_#{project.id}", class: "ed_prj" %>
-		<%= link_to image_tag("del.png", :size => "14x14", :border => 0), project, method: :delete, remote: true, class: "del_prj" %>
+		<%= link_to image_tag("edit.png", :size => "14x14", :border => 0, title: "edit project"), edit_project_path(project), remote: true, id: "ed_prj_#{project.id}", class: "ed_prj" %>
+		<%= link_to image_tag("del.png", :size => "14x14", :border => 0, title: "delete project"), project, method: :delete, remote: true, class: "del_prj" %>
 	</div>
 	<div class="controls input-prepend input-append">
 		<%= form_for project.tasks.new, remote: true do |f| %>

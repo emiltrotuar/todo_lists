@@ -1,5 +1,5 @@
 $('#new_project').remove();
 $('#new_project_link').show();
 $('#projects').append('<%= j render(@project) %>');
-$('.draggable:last-child').hide().fadeIn(500);
+$('.draggable:last-child').hide().fadeIn(500).draggable({ containment: "parent" });;
 $('#task_content_<%= @project.id %>').val('').focus();
