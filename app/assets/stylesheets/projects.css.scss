@@ -26,6 +26,11 @@
 	cursor: pointer;
 }
 
+.ed_task_inp, .ed_prj_inp {
+	margin-bottom: 0px !important;
+	height: 22px !important;
+}
+
 form {
 	display: inline-block;
 	margin: 1px;
@@ -66,6 +71,11 @@ img:hover {
 .prj_actions img:last-child {
 	margin-right: 5px;
 }
+
+.prj_actions form {
+	margin-bottom: 0 !important;
+}
+
 
 #projects {
 	border-style: solid;

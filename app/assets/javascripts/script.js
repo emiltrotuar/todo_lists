@@ -1,5 +1,5 @@
 $(function() {
-	var tmp;	
+	var tmp;
 
 	$('.edit_task').submitOnCheck();
 
@@ -19,11 +19,23 @@ $(function() {
 	$(document).on('keypress', '.ed_task_inp', function(event) { /* change task name */
 		if (event.keyCode === 13) {
 			$(this).closest('.draggable').find('.task_input').focus();
-			$(this).closest('tr').find('td:nth-child(3) > img').after(tmp);
+			$.each($('tr'), function(i,v) {
+				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
+			});
+			$('.ed_task').hide();
+			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
+				$(this).closest('tr').find('.ed_task').show();
+			}
 			$(this).parent().submit();
 		} else if (event.keyCode === 27) {
 			$(this).closest('.draggable').find('.task_input').focus();
-			$(this).closest('tr').find('td:nth-child(3) > img').after(tmp);
+			$.each($('tr'), function(i,v) {
+				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
+			});
+			$('.ed_task').hide();
+			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
+				$(this).closest('tr').find('.ed_task').show();
+			}
 			$(this).parent().prev().show();
 			$(this).parent().remove();
 		}
@@ -43,7 +55,7 @@ $(function() {
 	});
 
 	$(document).on('click', '.ed_task', function() { /* delete task */
-		tmp = $(this).detach(); 
+		tmp = $('.ed_task').detach();
 	});
 
 	$(document).on('click', '.del_task', function() { /* delete task */
