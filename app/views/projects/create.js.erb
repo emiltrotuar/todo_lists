@@ -1,5 +1,11 @@
 $('#new_project').remove();
-$('#new_project_link').show();
 $('#projects').append('<%= j render(@project) %>');
-$('.draggable:last-child').hide().fadeIn(500).draggable({ containment: "parent" });;
+var h1 = $('#projects').height();
+var h2 = $('.draggable:last-child').height();
+$('.draggable:last-child').hide();
+$('#projects').animate({ height: (h1 + h2) + "px" }, 800, function() {
+	$('.draggable:last-child').fadeIn(500).draggable({ containment: "parent" });
+	$('#new_project_link').show();
+	$('html, body').animate({ scrollTop: $("#new_project_link").offset().top + "px" }, 1000);
+});
 $('#task_content_<%= @project.id %>').val('').focus();

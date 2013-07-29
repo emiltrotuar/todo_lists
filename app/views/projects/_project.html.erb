@@ -6,9 +6,10 @@
 		<%= link_to image_tag("del.png", :size => "14x14", :border => 0, title: "delete project"), project, method: :delete, remote: true, class: "del_prj" %>
 	</div>
 	<div class="controls input-prepend input-append">
+		<button class="fold btn btn-info"><i class="icon-minus-sign"></i></button>
+		<button class="unfold btn btn-info" style="display: none"><i class="icon-plus-sign"></i></button>
 		<%= form_for project.tasks.new, remote: true do |f| %>
 			<input type="hidden" name="prj_id" value="<%= project.id %>" />
-			<button class="unfold btn btn-info"><i class="icon-plus-sign"></i></button>
 			<%= f.text_field :content, class: "task_input", placeholder: "Start typing here to create task...", id: "task_content_#{project.id}" %>
 			<%= f.submit "Add task", class: "addbutt btn btn-success" %>
 		<% end %>

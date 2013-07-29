@@ -5,11 +5,18 @@ $(function() {
 
 	$('.draggable').draggable({ containment: "parent" });
 
+	$(document).on('click', '.unfold, .fold', function(event) {
+		$('.fold').toggle();
+		$('.unfold').toggle();
+		$(this).closest('.draggable').find('.task_list').slideToggle("slow");
+	});
+
 	$(document).on('keypress', '.ed_prj_inp', function(event) { /* change project name */
 		if (event.keyCode === 13) {
 			$(this).closest('.draggable').find('.task_input').focus();
 			$(this).parent().submit();
 		} else if (event.keyCode === 27) {
+			$('.prj_actions > img').css('margin-bottom', '0px');
 			$(this).closest('.draggable').find('.task_input').focus();
 			$(this).parent().prevAll().show();
 			$(this).parent().remove();

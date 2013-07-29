@@ -3,9 +3,9 @@
 <div id="projects">
 	<%= render @projects %>
 </div>
-	<div align="center">
-		<%= link_to "New Project", new_project_path, id: "new_project_link", remote: true, class: "btn btn-large btn-primary" %>
-	</div> 
+<div id="new" align="center">
+	<%= link_to "New Project", new_project_path, id: "new_project_link", remote: true, class: "btn btn-large btn-primary" %>
+</div> 
 <% else %>
 <div class="center hero-unit">
 	<h1>Welcome to the Todo Lists</h1>
