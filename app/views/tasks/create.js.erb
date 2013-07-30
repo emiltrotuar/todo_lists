@@ -1,8 +1,8 @@
 if ($('#task_list_<%= @task.project_id %> table').length){
 	createNode();
 } else {
+	$('#task_list_<%= @task.project_id %> p').remove();
 	$('#task_list_<%= @task.project_id %>').append('<table cellpadding="1" class="table-hover"><tbody></tbody></table>');
-	$('#no_recs_<%= @task.project_id %>').remove();
 	createNode();
 }
 

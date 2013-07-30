@@ -21,7 +21,10 @@
 	width: 490px;
 	background-color: #DCDCDC;
 	border-radius: 5px;
-	/*margin: 5px;*/
+}
+
+.draggable + .draggable {
+	margin-top: 10px;
 }
 
 .ed_prj:hover, .prj_actions:hover, .del_prj:hover, tr:hover {
@@ -66,7 +69,7 @@ img:hover {
 
 
 #new_project_link {
-	margin: 5px;
+	margin: 10px;
 }
 
 .prj_actions {

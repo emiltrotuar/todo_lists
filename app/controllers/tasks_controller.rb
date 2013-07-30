@@ -33,8 +33,8 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id]).destroy
     respond_to do |format|
-         format.html { redirect_to projects_url }
-         format.js
+         format.html { render nothing: true }
+         format.js { render nothing: true }
     end
   end
 end

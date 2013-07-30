@@ -16,7 +16,7 @@
 	</div>
 	<div class="task_list" id="task_list_<%= project.id %>" width="auto">
 		<% if Project.find(project.id).tasks.empty? %>
-			<p id="no_recs_<%= project.id %>">no records</p>
+			<p>no records</p>
 		<% else %>
 			<table cellpadding="1" class="table-hover">
 				<%= render project.tasks %>

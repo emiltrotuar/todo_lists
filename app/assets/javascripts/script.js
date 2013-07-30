@@ -5,10 +5,22 @@ $(function() {
 
 	$('.draggable').draggable({ containment: "parent" });
 
-	$(document).on('click', '.unfold, .fold', function(event) {
-		$('.fold').toggle();
-		$('.unfold').toggle();
+	$(document).on('click', '.unfold, .fold', function() { /* unfold task list */
+		$(this).parent().find('.fold').toggle();
+		$(this).parent().find('.unfold').toggle();
 		$(this).closest('.draggable').find('.task_list').slideToggle("slow");
+	});
+
+	$(document).on('dblclick', '.prj_actions', function(event) { /* unfold task list */
+		var d = $(this).closest('.draggable')
+		if (d.find('.unfold').css('display') === 'none'){
+			d.find('.fold').click();
+		} else {
+			d.find('.unfold').click();
+		}
+	});
+	$('body').on('dblclick', '.ed_prj', function(event) {
+		event.stopPropagation();
 	});
 
 	$(document).on('keypress', '.ed_prj_inp', function(event) { /* change project name */
@@ -48,32 +60,41 @@ $(function() {
 		}
 	});
 
-	$(document).on('keypress', '#project_name', function(event) { /* unfold todo list */
+	$(document).on('keypress', '#project_name', function(event) {
 		if (event.keyCode === 27) {
 			$(this).closest('div[align=center]').prev().find('.draggable:first-child').find('.task_input').focus();
 			$(this).closest('form').prev().show();
 			$(this).parent().remove();
 		}
-
 	});
 
 	$(document).on('click', '.del_prj', function(){  /* delete project */
 		$(this).closest('.draggable').fadeOut('slow', function() { this.closest('.draggable').remove(); });
 	});
 
-	$(document).on('click', '.ed_task', function() { /* delete task */
+	$(document).on('click', '.ed_task', function() { /* edit task */
 		tmp = $('.ed_task').detach();
 	});
 
-	$(document).on('click', '.del_task', function() { /* delete task */
-		$(this).closest('tr').fadeOut('slow', function() { $(this).closest('tr').remove(); }); 
+	$(document).on('dblclick', 'td:nth-child(2)', function() { /* edit task */
+		$(this).closest('tr').find('.ed_task').click();
 	});
 
-	$(document).on('mouseenter', '.reorder', function(){
+	$(document).on('click', '.del_task', function() { /* delete task */
+		var t = $(this).closest('.task_list');
+		$(this).closest('tr').fadeOut('slow', function() {
+			$(this).closest('tr').detach(); 
+			if (t.find('tr').length === 0){
+				t.find('table').remove();
+				t.append('<p>no records</p>');
+			}
+		});
+	});
+
+	$(document).on('mouseenter', '.reorder', function(){ /* you may sort items only if you drag the arrows icon */
 		$(this).closest('tbody').sortable({
 			axis: "y",
 			revert: 200,
-			opacity: 0.5,
 			containment: "parent",
 			sort: function(event, ui) {
 				ui.item.find('td:nth-child(2)').width(ui.item.siblings('tr').find('td:nth-child(2)').width());
@@ -88,7 +109,7 @@ $(function() {
 		$(this).closest('tbody').sortable('destroy');
 	});
 
-	$(document).on('mouseenter', 'tr', function(){
+	$(document).on('mouseenter', 'tr', function(){				/* show task options if cursor over the 3rd column */
 		$(this).find('td:nth-child(3)').find('*').show();
 	}).on('mouseleave', 'tr', function(){
 		$(this).find('td:nth-child(3)').find('*').hide();
@@ -96,7 +117,7 @@ $(function() {
 
 });
 
-jQuery.fn.submitOnCheck = function(){
+jQuery.fn.submitOnCheck = function(){ 									/* save checked state of task in db */
 	this.find('input[type=checkbox]').click(function() {
 		$(this).parent('form').submit();
 	});
