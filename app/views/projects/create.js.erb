@@ -1,5 +1,5 @@
-debugger;
-$('#new_project').remove();
+// debugger;
+$('#new_project').fadeOut('slow', function(){ $(this).remove(); });
 var h1 = $('#projects').height();
 var offset = $('#projects').offset();
 $('#projects').append('<%= j render(@project) %>');
@@ -8,7 +8,7 @@ $('.draggable:last-child').hide();
 $('#projects').animate({ height: h1 + h2 + 10 + "px" }, 800, function() {
 	$('.draggable:last-child').fadeIn(500).draggable({ containment: "parent" });
 	$('#new_project_link').show();
-	$('html, body').animate({ scrollTop: $("#new_project_link").offset().top + "px" }, 1000);
+	$('html').animate({ scrollTop: $("#new_project_link").offset().top + "px" }, 1000);
 	$('#task_content_<%= @project.id %>').val('').focus();
 	$('#projects').css('height', 'auto');
 });

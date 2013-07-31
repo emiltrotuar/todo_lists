@@ -42,7 +42,7 @@
 	width: auto;
 	background-color: #F0F0F0 !important;
 	margin-bottom: -6px !important;
-	margin-left: 23px !important;
+	margin-left: 75px;
 }
 
 .fold, .unfold {
@@ -63,6 +63,11 @@ img:hover {
 	opacity: 1;
 }
 
+input::-moz-selection, 
+textarea::-moz-selection {
+    background-color: #A5C7F4;
+}
+
 .new_task {
 	margin: 8px 8px 8px 0;
 }
@@ -80,12 +85,13 @@ img:hover {
 
 .prj_actions .name {
 	position: relative;
-	margin: 5px 5px 5px 25px;
+	margin: 5px 5px 5px 75px;
 	color: white;
 }
 
 .prj_actions > img {
-	margin-left: 10px;
+	margin: 10px 0 0 15px;
+	position: absolute;
 }
 
 .prj_actions img:last-child {
@@ -96,14 +102,20 @@ img:hover {
 	margin-bottom: 0 !important;
 }
 
-
-#projects {
-	/*padding: 5px;*/
-}
-
 p {
   font-size: 1.1em;
 }
+
+#scroll_up {
+	position: fixed;
+	height: 100%;
+	width: 100px;
+	opacity: 0;
+	margin-top: -20px;
+	padding: 13px 0;
+	background: #EAFAFD;
+}
+
 
 .span9 {
 	margin-left: 0px;
@@ -139,3 +151,10 @@ td + td { border-left: 1px solid #B7BAC1; }
 	margin-bottom: 8px;
 }
 
+#up, #up:hover {
+	display: block;
+	margin: 0 0 0 35px;
+	width: 24px;
+	height: 24px;
+	opacity: .3;
+}
