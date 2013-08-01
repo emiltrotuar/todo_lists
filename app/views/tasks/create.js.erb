@@ -1,15 +1,39 @@
 if ($('#task_list_<%= @task.project_id %> table').length){
 	createNode();
 } else {
-	$('#task_list_<%= @task.project_id %> p').remove();
-	$('#task_list_<%= @task.project_id %>').append('<table cellpadding="1" class="table-hover"><tbody></tbody></table>');
-	createNode();
+	$('#task_list_<%= @task.project_id %> p').fadeOut(200, function(){
+		$('#task_list_<%= @task.project_id %>').append('<table cellpadding="1" class="table-hover"><tbody></tbody></table>');
+		$(this).closest('.draggable').find('.task_input').focus();
+		$(this).detach();
+		createNode();
+	});
 }
 
 function createNode(){
 	var path =  '#task_list_<%= @task.project_id %> table tbody';
-	$(path).append('<%= j render(@task) %>');
-	$(path+" tr:last-child").hide().fadeIn(500);
+	$(path).sortable({
+		axis: "y",
+		revert: 200,
+		opacity: 0.5,
+		handle: '.reorder',
+		containment: 'parent',
+		helper: function(e, ui) {
+			ui.children().each(function() {
+				$(this).width($(this).width());
+			});
+			return ui;
+		},
+		sort: function(event, ui) {
+			$('table').css('table-layout', 'auto');
+		},
+		stop: function(event, ui) { 
+			ui.item.find('td:nth-child(3)').find('*').hide();
+			$('table').css('table-layout', 'fixed');
+		}
+	}).append('<%= j render(@task) %>');
+	$(path+" tr:last-child").hide().fadeIn(300);
 	$('#edit_task_<%= @task.id %>').submitOnCheck();
 	$('#task_content_<%= @task.project_id %>').val('').focus();
+	if ($(path).closest('.task_list').css('display') === 'none')
+		$(path).closest('.draggable').find('.unfold').click();
 }

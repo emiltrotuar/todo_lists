@@ -21,6 +21,7 @@
 	width: 490px;
 	background-color: #DCDCDC;
 	border-radius: 5px;
+	position: relative;
 }
 
 .draggable + .draggable {
@@ -149,6 +150,10 @@ td + td { border-left: 1px solid #B7BAC1; }
 
 .tasks {
 	margin-bottom: 8px;
+}
+
+.task_list p {
+	margin: 0;
 }
 
 #up, #up:hover {

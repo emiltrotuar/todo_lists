@@ -1,6 +1,6 @@
 <% if !task.content.nil? %>
 	<tr id="task_<%= task.id %>">
-		<td width="47px" align="center">
+		<td width="50px" align="center">
 			<%= form_for task, remote: true do |f| %>
 			<%= f.check_box :complete %>
 			<% end %>
@@ -8,7 +8,7 @@
 		<td width="auto">
 			<p id="task_content_<%= task.id %>" style="color:black"><%= task.content %></p>
 		</td>
-		<td width="88px" align="center">
+		<td width="90px" align="center">
 			<%= image_tag "arrows.png", class: "reorder", :size => "22x22", :border => 0, style: "display: none" %>
 			<%= link_to image_tag("edit.png", :size => "16x16", :border => 0), edit_task_path(task), style: "display: none", remote: true, class: "ed_task" %>
 			<%= link_to image_tag("del.png", :size => "15x15", :border => 0), task, method: :delete, style: "display: none", remote: true, class: "del_task" %>

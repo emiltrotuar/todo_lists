@@ -5,8 +5,8 @@ var offset = $('#projects').offset();
 $('#projects').append('<%= j render(@project) %>');
 var h2 = $('.draggable:last-child').height();
 $('.draggable:last-child').hide();
-$('#projects').animate({ height: h1 + h2 + 10 + "px" }, 800, function() {
-	$('.draggable:last-child').fadeIn(500).draggable({ containment: "parent" });
+$('#projects').animate({ height: h1 + h2 + "px" }, 800, function() {
+	$('.draggable:last-child').fadeIn(500);
 	$('#new_project_link').show();
 	$('html').animate({ scrollTop: $("#new_project_link").offset().top + "px" }, 1000);
 	$('#task_content_<%= @project.id %>').val('').focus();
