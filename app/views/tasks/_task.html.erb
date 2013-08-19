@@ -6,6 +6,11 @@
 			<% end %>
 		</td>
 		<td width="auto">
+			<% if !task.date.empty? %>
+				<div class="date" style="display: inline"><%= task.date %></div>
+			<% else %>
+				<div class="date" style="display: none"></div>
+			<% end %>
 			<p id="task_content_<%= task.id %>" style="color:black"><%= task.content %></p>
 		</td>
 		<td width="90px" align="center">

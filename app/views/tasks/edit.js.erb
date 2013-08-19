@@ -1,5 +1,7 @@
 $('#task_content_<%= @task.id %>').hide().after('<%= j render("edit") %>');
 $('#edit_task_content_<%= @task.id %>').select();
+$('.dp').datepicker({ dateFormat: "d M", onClose: function(){ this.focus(); } });
+$('#task_content_<%= @task.id %>').closest('td').find('.date').css('display','none');
 $('.ed_task_inp').css('height', '20px').autoResize({
 	onResize : function() {
 		$(this).css({opacity:0.8});

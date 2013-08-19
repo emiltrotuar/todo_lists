@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :content, :complete
+  attr_accessible :content, :complete, :date
   belongs_to :project
 
   validates :project_id, presence: true

@@ -8,10 +8,32 @@
 	margin-bottom: 0px;
 }
 
+.date {
+	float: right;
+	height: 18px;
+	border-radius: 3px;
+	border: 1px solid #B7BAC1;
+	background-color: #E1E1E1;
+	margin: auto;
+}
+
 .del_prj {
 	position: relative;
 	float: right;
 	margin: 5px;
+}
+
+.dp {
+	float: right;
+	width: 135px;
+	display: inline-block;
+	height: 20px !important;
+	padding: 1px 5px !important;
+	margin-top: 4px;
+	margin-right: 3px;
+	text-align: center;
+	border: medium none;
+  outline: medium none;
 }
 
 .draggable {
@@ -30,6 +52,19 @@
 
 .ed_prj:hover, .prj_actions:hover, .del_prj:hover, tr:hover {
 	cursor: pointer;
+}
+
+.ed_task_buttons {
+	display: inline-block;
+	border-radius: 3px;
+	border: 1px solid #B7B7B7;
+	height: 20px;
+	padding: 0 2px;
+	margin-top: 4px;
+}
+
+.ed_task_buttons:hover {
+	background-color: #FFFFDC;
 }
 
 .ed_task_inp, .ed_prj_inp {
@@ -53,7 +88,7 @@
 
 form {
 	display: inline-block;
-	margin: 1px;
+	margin: 1px 1px -4px 1px;
 }
 
 img {
@@ -129,6 +164,7 @@ table {
 }
 
 td:nth-child(2) {
+	vertical-align: middle;
 	word-wrap: break-word;
 	padding-left: 10px;
 }
@@ -153,7 +189,7 @@ td + td { border-left: 1px solid #B7BAC1; }
 }
 
 .task_list p {
-	margin: 0;
+	margin-right: 5px;
 }
 
 #up, #up:hover {
@@ -162,4 +198,12 @@ td + td { border-left: 1px solid #B7BAC1; }
 	width: 24px;
 	height: 24px;
 	opacity: .3;
+}
+
+.x {
+	border: medium none;
+	outline: medium none;
+	left: 372px;
+	margin-top: 6px;
+	position: absolute;
 }

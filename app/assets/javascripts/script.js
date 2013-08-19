@@ -55,7 +55,7 @@ $(function() {
 		}
 	});
 
-	$(document).on('keypress', '.ed_task_inp', function(event) { /* change task name */
+	$(document).on('keypress', '.ed_task_inp, .dp', function(event) { /* change task name */
 		if (event.keyCode === 13) {
 			$(this).closest('.draggable').find('.task_input').focus();
 			$.each($('tr'), function(i,v) {
@@ -75,9 +75,49 @@ $(function() {
 			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
 				$(this).closest('tr').find('.ed_task').show();
 			}
+			$(this).closest('td').find('.date').css('display', 'none');
 			$(this).parent().prev().show();
 			$(this).parent().remove();
 		}
+	});
+
+	$(document).on('click', '.ed_task_buttons', function() {
+		if ($(this).html() === 'save'){
+			$(this).closest('.draggable').find('.task_input').focus();
+			$.each($('tr'), function(i,v) {
+				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
+			});
+			$('.ed_task').hide();
+			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
+				$(this).closest('tr').find('.ed_task').show();
+			}
+			$(this).parent().submit();
+		} else {
+			$(this).closest('.draggable').find('.task_input').focus();
+			$.each($('tr'), function(i,v) {
+				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
+			});
+			$('.ed_task').hide();
+			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
+				$(this).closest('tr').find('.ed_task').show();
+			}
+			$(this).closest('td').find('.date').css('display', 'none');
+			$(this).parent().prev().show();
+			$(this).parent().remove();
+		}
+	});
+
+	$(document).on('click', '.x', function() {
+			$(this).closest('.draggable').find('.task_input').focus();
+			$.each($('tr'), function(i,v) {
+				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
+			});
+			$('.ed_task').hide();
+			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
+				$(this).closest('tr').find('.ed_task').show();
+			}
+			$(this).next().val('');
+			$(this).parent().submit();
 	});
 
 	$(document).on('keypress', '#project_name', function(event) {

@@ -1,2 +1,9 @@
+debugger;
 $('#edit_task_content_<%= @task.id %>').parent().remove();
 $('#task_content_<%= @task.id %>').show().html('<%= @task.content %>');
+var tmp = $('#task_content_<%= @task.id %>').closest('td').find('.date');
+if (tmp.html('<%= @task.date %>').html() === ''){
+	tmp.css('display', 'none');
+} else {
+	tmp.css('display', 'inline');
+}
