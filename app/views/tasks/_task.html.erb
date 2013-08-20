@@ -6,17 +6,17 @@
 			<% end %>
 		</td>
 		<td width="auto">
-			<% if !task.date.empty? %>
-				<div class="date" style="display: inline"><%= task.date %></div>
+			<% if task.date.to_s.length != 0 %>
+				<div class="date" style="display: inline"><%= task.date.strftime("%d %b") %></div>
 			<% else %>
 				<div class="date" style="display: none"></div>
 			<% end %>
 			<p id="task_content_<%= task.id %>" style="color:black"><%= task.content %></p>
 		</td>
 		<td width="90px" align="center">
-			<%= image_tag "arrows.png", class: "reorder", :size => "22x22", :border => 0, style: "display: none" %>
-			<%= link_to image_tag("edit.png", :size => "16x16", :border => 0), edit_task_path(task), style: "display: none", remote: true, class: "ed_task" %>
-			<%= link_to image_tag("del.png", :size => "15x15", :border => 0), task, method: :delete, style: "display: none", remote: true, class: "del_task" %>
+			<%= image_tag "arrows.png", class: "reorder", size: "22x22", border: 0, style: "display: none" %>
+			<%= link_to image_tag("edit.png", size: "16x16", border: 0), edit_task_path(task), style: "display: none", remote: true, class: "ed_task" %>
+			<%= link_to image_tag("del.png", size: "15x15", border: 0), task, method: :delete, style: "display: none", remote: true, class: "del_task" %>
 		</td>
 	</tr>
 <% end %>

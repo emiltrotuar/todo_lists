@@ -17,8 +17,6 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
-  it { should respond_to(:tasks) }
-  it { should respond_to(:feed) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -146,15 +144,5 @@ describe User do
     let!(:newer_task) do
       FactoryGirl.create(:task, user: @user, created_at: 1.hour.ago)
     end
-  
-    it "should destroy associated tasks" do
-      tasks = @user.tasks.dup
-      @user.destroy
-      tasks.should_not be_empty
-      tasks.each do |task|
-        Task.find_by_id(task.id).should be_nil
-      end
-    end
-    
   end
 end
