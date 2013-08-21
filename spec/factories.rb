@@ -10,8 +10,13 @@ FactoryGirl.define do
     end
   end
 
+  factory :project do
+    name "project"
+    user
+  end
+
   factory :task do
     content "Lorem ipsum"
-    user
+    project
   end
 end

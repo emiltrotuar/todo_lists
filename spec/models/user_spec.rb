@@ -133,16 +133,4 @@ describe User do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
-
-
-  describe "task associations" do
-
-    before { @user.save }
-    let!(:older_task) do 
-      FactoryGirl.create(:task, user: @user, created_at: 1.day.ago)
-    end
-    let!(:newer_task) do
-      FactoryGirl.create(:task, user: @user, created_at: 1.hour.ago)
-    end
-  end
 end
