@@ -6,7 +6,16 @@ $(function() {
 	$( ".sortable" ).sortable({
 		axis: "y",
 		revert: 200,
-		containment: "parent"
+		containment: "parent",
+		start: function(event, ui) {
+			if (ui.item.prev().length != 0)
+				ui.item.startPos = ui.item.prev().offset().left;
+			else
+				ui.item.startPos = ui.item.next().offset().left;
+		},
+		sort: function(event, ui) {
+			ui.item.css('left', ui.item.startPos+"px");
+		}
 	});
 
 	$(document).on('mouseenter', '#scroll_up', function() {

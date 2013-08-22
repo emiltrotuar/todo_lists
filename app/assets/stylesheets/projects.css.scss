@@ -8,21 +8,16 @@
 	margin-bottom: 0px;
 }
 
+.controls .task_input {
+	width: 345px;
+}
+
 .date {
 	float: right;
 	font-size: 12px;
-	height: 18px;
-	border-radius: 3px;
-	border: 1px solid #B7BAC1;
-	background-color: #E1E1E1;
+	border: none;
 	margin: auto;
 	color: #7A7A7A;
-}
-
-.del_prj {
-	position: relative;
-	float: right;
-	margin: 5px;
 }
 
 .dp {
@@ -31,21 +26,17 @@
 	display: inline-block;
 	height: 20px !important;
 	padding: 1px 5px !important;
-	margin-top: 4px;
-	margin-right: 3px;
+	margin: 0 3px 0 0 !important;
 	text-align: center;
 	border: medium none;
   outline: medium none;
 }
 
 .draggable {
-	display: block;
-	left: 30%;
-	height: auto;
-	width: 490px;
 	background-color: #DCDCDC;
 	border-radius: 5px;
-	position: relative;
+	width: 490px;
+  margin: 0 auto;
 }
 
 .draggable + .draggable {
@@ -60,9 +51,8 @@
 	display: inline-block;
 	border-radius: 3px;
 	border: 1px solid #B7B7B7;
-	height: 20px;
 	padding: 0 2px;
-	margin-top: 4px;
+	line-height:15px;
 }
 
 .ed_task_buttons:hover {
@@ -77,10 +67,8 @@
 }
 
 .ed_prj_inp {
-	width: auto;
+	max-width: 353px;
 	background-color: #F0F0F0 !important;
-	margin-bottom: -6px !important;
-	margin-left: 75px;
 }
 
 .fold, .unfold {
@@ -90,7 +78,7 @@
 
 form {
 	display: inline-block;
-	margin: 1px 1px -4px 1px;
+	margin: auto;
 }
 
 img {
@@ -116,28 +104,29 @@ textarea::-moz-selection {
 }
 
 .prj_actions {
-	height: 30px;
 	background-color: #4A5C9A;
-	margin-bottom: 0px;
 }
 
 .prj_actions .name {
 	position: relative;
-	margin: 5px 5px 5px 75px;
+	margin: 5px 5px 5px 20px;
 	color: white;
+	max-width: 353px;
+	word-wrap: break-word;
+}
+
+.prj_actions .del_prj {
+	position: relative;
+	float: right;
+	margin: 5px 10px 0 0;
 }
 
 .prj_actions > img {
-	margin: 10px 0 0 15px;
-	position: absolute;
-}
-
-.prj_actions img:last-child {
-	margin-right: 5px;
+	margin: 0 0 0 15px;
 }
 
 .prj_actions form {
-	margin-bottom: 0 !important;
+	margin: 5px 5px 5px 20px;
 }
 
 p {
@@ -166,9 +155,12 @@ table {
 }
 
 td:nth-child(2) {
-	vertical-align: middle;
 	word-wrap: break-word;
 	padding-left: 10px;
+}
+
+td:nth-child(2) form {
+	margin-top: 3px;
 }
 
 td input[type=checkbox] {
@@ -182,16 +174,12 @@ td p {
 	vertical-align: middle;
 }
 
-tr { border-top: 1px solid #B7BAC1; }
+tr { border-top: 1px solid #B7BAC1; line-height: 25px; }
 tr + tr { border-top: 1px solid #B7BAC1; }
 td + td { border-left: 1px solid #B7BAC1; }
 
 .tasks {
 	margin-bottom: 8px;
-}
-
-.task_list p {
-	margin-right: 5px;
 }
 
 #up, #up:hover {
@@ -203,9 +191,7 @@ td + td { border-left: 1px solid #B7BAC1; }
 }
 
 .x {
-	border: medium none;
-	outline: medium none;
-	left: 372px;
-	margin-top: 6px;
-	position: absolute;
+	left: 67%;
+	position: relative;
+	vertical-align: baseline;
 }

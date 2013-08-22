@@ -7,9 +7,9 @@
 		</td>
 		<td width="auto">
 			<% if task.date.to_s.length != 0 %>
-				<div class="date" style="display: inline"><%= task.date.strftime("%d %b") %></div>
+				<span class="date" style="display: inline"><%= task.date.strftime("%d %b") %></span>
 			<% else %>
-				<div class="date" style="display: none"></div>
+				<span class="date" style="display: none"></span>
 			<% end %>
 			<p id="task_content_<%= task.id %>" style="color:black"><%= task.content %></p>
 		</td>

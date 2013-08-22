@@ -12,6 +12,6 @@
   <%= f.text_area :content, id: "edit_task_content_#{@task.id}", class: "ed_task_inp" %>
   <div class="ed_task_buttons">save</div>
   <div class="ed_task_buttons">cancel</div>
-  <%= image_tag "x.png", class: "x", size: "16x16", border: 0 %>
+  <%= image_tag "x.png", class: "x", size: "15x15", border: 0 %>
   <%= f.text_field :date, class: "dp", placeholder: "Select a date...", value: "#{@task.date.try(:strftime, "%d %b")}" %>
 <% end %>
