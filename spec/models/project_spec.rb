@@ -32,7 +32,7 @@ describe Project do
   end
 
   describe "with name that is too long" do
-    before { @project.name = "a" * 51 }
+    before { @project.name = "a" * 76 }
     it { should_not be_valid }
   end
 end

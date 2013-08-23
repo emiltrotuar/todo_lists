@@ -9,12 +9,9 @@ $(function() {
 		containment: "parent",
 		start: function(event, ui) {
 			if (ui.item.prev().length != 0)
-				ui.item.startPos = ui.item.prev().offset().left;
+				ui.item.css('left', ui.item.prev().offset().left+"px");
 			else
-				ui.item.startPos = ui.item.next().offset().left;
-		},
-		sort: function(event, ui) {
-			ui.item.css('left', ui.item.startPos+"px");
+				ui.item.css('left', ui.item.next().offset().left+"px");
 		}
 	});
 
@@ -66,57 +63,17 @@ $(function() {
 
 	$(document).on('keypress', '.ed_task_inp, .dp', function(event) { /* change task name */
 		if (event.keyCode === 13) {
-			$(this).closest('.draggable').find('.task_input').focus();
-			$.each($('tr'), function(i,v) {
-				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
-			});
-			$('.ed_task').hide();
-			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
-				$(this).closest('tr').find('.ed_task').show();
-			}
-			$(this).parent().submit();
+			ct($(this));
 		} else if (event.keyCode === 27) {
-			$(this).closest('.draggable').find('.task_input').focus();
-			$.each($('tr'), function(i,v) {
-				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
-			});
-			$('.ed_task').hide();
-			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
-				$(this).closest('tr').find('.ed_task').show();
-			}
-			if ($(this).closest('form').find('.dp').val() === ''){
-				$(this).closest('td').find('.date').css('display', 'none');
-			} else { $(this).closest('td').find('.date').css('display', 'inline');}
-			$(this).parent().prev().show();
-			$(this).parent().remove();
+			esc($(this));
 		}
 	});
 
 	$(document).on('click', '.ed_task_buttons', function() { /* change task name */
 		if ($(this).html() === 'save'){
-			$(this).closest('.draggable').find('.task_input').focus();
-			$.each($('tr'), function(i,v) {
-				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
-			});
-			$('.ed_task').hide();
-			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
-				$(this).closest('tr').find('.ed_task').show();
-			}
-			$(this).parent().submit();
+			ct($(this));
 		} else {
-			$(this).closest('.draggable').find('.task_input').focus();
-			$.each($('tr'), function(i,v) {
-				$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
-			});
-			$('.ed_task').hide();
-			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
-				$(this).closest('tr').find('.ed_task').show();
-			}
-			if ($(this).closest('form').find('.dp').val() === ''){
-				$(this).closest('td').find('.date').css('display', 'none');
-			} else { $(this).closest('td').find('.date').css('display', 'inline');}
-			$(this).parent().prev().show();
-			$(this).parent().remove();
+			esc($(this));
 		}
 	});
 
@@ -182,12 +139,21 @@ $(function() {
 			});
 			return ui;
 		},
-		sort: function(event, ui) {
+		start: function(event, ui) {
 			$('table').css('table-layout', 'auto');
 		},
-		stop: function(event, ui) { 
+		update: function(event, ui) { 
 			ui.item.find('td:nth-child(3)').find('*').hide();
 			$('table').css('table-layout', 'fixed');
+			var pid = "&prj_id="+$(this).closest('.draggable').attr('id');
+			var dt = $(this).sortable('serialize')+pid;
+			var th = $(this);
+			$.ajax({
+				type: 'post',
+				data: dt,
+				dataType: 'script',
+				url: '/projects/sort'
+			});
 		}
 	});
 
@@ -195,14 +161,36 @@ $(function() {
 		$(this).find('td:nth-child(3)').find('*').show();
 	}).on('mouseleave', 'tr', function(){
 		$(this).find('td:nth-child(3)').find('*').hide();
-		// $(this).find('textarea:last-child').trigger(jQuery.Event('keypress', {keyCode: 27}));
 		$(this).find('.ed_task').hide();
 	});
 
-	$(document).on('mouseleave', '.prj_actions', function(){
-		// $(this).find('.ed_prj_inp').trigger(jQuery.Event('keypress', {keyCode: 27}));
-	});
+	function ct(th){ 									
+		th.closest('.draggable').find('.task_input').focus();
+		$.each($('tr'), function(i,v) {
+			$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
+		});
+		$('.ed_task').hide();
+		if (th.closest('tr').find('td:nth-child(3):hover').length != 0) {
+			th.closest('tr').find('.ed_task').show();
+		}
+		th.parent().submit();
+	}
 
+	function esc(th){
+		th.closest('.draggable').find('.task_input').focus();
+		$.each($('tr'), function(i,v) {
+			$('tr:eq('+i+')').find('td:nth-child(3) > img').after(tmp[i]);
+		});
+		$('.ed_task').hide();
+		if (th.closest('tr').find('td:nth-child(3):hover').length != 0) {
+			th.closest('tr').find('.ed_task').show();
+		}
+		if (th.closest('form').find('.dp').val() === ''){
+			th.closest('td').find('.date').css('display', 'none');
+		} else { th.closest('td').find('.date').css('display', 'inline');}
+		th.parent().prev().show();
+		th.parent().remove();
+	}
 });
 
 jQuery.fn.submitOnCheck = function(){ 									/* save checked state of task in db */

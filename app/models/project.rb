@@ -3,5 +3,5 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :tasks, dependent: :destroy
   validates :user_id, presence: true
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 75 }
 end

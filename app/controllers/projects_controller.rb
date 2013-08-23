@@ -36,20 +36,31 @@ class ProjectsController < ApplicationController
      format.html {redirect_to projects_url}
      format.js
    end
- end
+  end
 
- def destroy
-   @project = Project.destroy(params[:id])
-   respond_to do |format|
+  def destroy
+    @project = Project.destroy(params[:id])
+     respond_to do |format|
      format.html { render nothing: true }
      format.js { render nothing: true }
-   end
- end
+    end
+  end
 
- private
+  def sort
+    @project = current_user.projects.find(params[:prj_id])
+    @tasks = @project.tasks
+    @tasks.each do |task|
+      task.position = params['task'].index(task.id.to_s) + 1
+      task.save
+    end
+    render nothing: true
+  end
 
- def correct_user
-  @project = current_user.projects.find_by_id(params[:id])
-  redirect_to root_url if @project.nil?
- end
+  private
+
+    def correct_user
+      @project = current_user.projects.find_by_id(params[:id])
+      redirect_to root_url if @project.nil?
+    end
+
 end

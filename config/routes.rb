@@ -1,6 +1,8 @@
 TodoLists::Application.routes.draw do
   resources :users
-  resources :projects
+  resources :projects do
+   post :sort, on: :collection
+  end
   resources :tasks
   
   resources :sessions,   only: [:new, :create, :destroy]
