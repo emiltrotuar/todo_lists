@@ -26,9 +26,17 @@ function createNode(){
 		start: function(event, ui) {
 			$('table').css('table-layout', 'auto');
 		},
-		stop: function(event, ui) { 
+		update: function(event, ui) { 
 			ui.item.find('td:nth-child(3)').find('*').hide();
 			$('table').css('table-layout', 'fixed');
+			var pid = "&prj_id="+$(this).closest('.draggable').attr('id').match(/\d+$/);
+			var dt = $(this).sortable('serialize')+pid;
+			$.ajax({
+				type: 'post',
+				data: dt,
+				dataType: 'script',
+				url: '/projects/sort'
+			});
 		}
 	}).append('<%= j render(@task) %>');
 	$(path+" tr:last-child").hide().fadeIn(300);

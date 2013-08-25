@@ -4,4 +4,5 @@ class Task < ActiveRecord::Base
   validates :project_id, presence: true
   validates :content, presence: true, length: { maximum: 100 }
   default_scope order: 'tasks.position ASC'
+  acts_as_list scope: :project
 end

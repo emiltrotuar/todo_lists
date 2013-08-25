@@ -12,6 +12,15 @@ $(function() {
 				ui.item.css('left', ui.item.prev().offset().left+"px");
 			else
 				ui.item.css('left', ui.item.next().offset().left+"px");
+		},
+		update: function(event, ui) {
+			var dt = $(this).sortable('serialize');
+			$.ajax({
+				type: 'post',
+				data: dt,
+				dataType: 'script',
+				url: '/projects/sortp'
+			});
 		}
 	});
 
@@ -145,9 +154,8 @@ $(function() {
 		update: function(event, ui) { 
 			ui.item.find('td:nth-child(3)').find('*').hide();
 			$('table').css('table-layout', 'fixed');
-			var pid = "&prj_id="+$(this).closest('.draggable').attr('id');
+			var pid = "&prj_id="+$(this).closest('.draggable').attr('id').match(/\d+$/);
 			var dt = $(this).sortable('serialize')+pid;
-			var th = $(this);
 			$.ajax({
 				type: 'post',
 				data: dt,

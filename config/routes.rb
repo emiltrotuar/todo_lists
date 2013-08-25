@@ -1,7 +1,7 @@
 TodoLists::Application.routes.draw do
   resources :users
   resources :projects do
-   post :sort, on: :collection
+   post :sort, :sortp, on: :collection
   end
   resources :tasks
   

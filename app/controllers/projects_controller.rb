@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.create!(params[:project])
+    @project.move_to_bottom
     respond_to do |format|
       format.html {redirect_to projects_url}
       format.js
@@ -52,6 +53,15 @@ class ProjectsController < ApplicationController
     @tasks.each do |task|
       task.position = params['task'].index(task.id.to_s) + 1
       task.save
+    end
+    render nothing: true
+  end
+
+  def sortp
+    @projects = current_user.projects
+    @projects.each do |project|
+      project.position = params['project'].index(project.id.to_s) + 1
+      project.save
     end
     render nothing: true
   end

@@ -7,6 +7,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Project.find(params[:prj_id]).tasks.create!(params[:task])
+    @task.move_to_bottom
     respond_to do |format|
       format.html {redirect_to projects_url}
       format.js
