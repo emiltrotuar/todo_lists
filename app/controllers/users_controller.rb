@@ -2,13 +2,19 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:edit, :update]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
-  def index
-    @users = User.paginate(page: params[:page])
-  end
-
+  
   def show
-    @user = User.find(params[:id])
-    @projects = @user.projects.paginate(page: params[:page])
+    if signed_in?
+      @user = User.find(params[:id])
+      @projects = @user.projects
+      if @user == current_user
+        render 'projects/index'
+      else 
+        render 'denied'
+      end
+    else
+      render 'sessions/new'
+    end
   end
 
   def new
@@ -23,7 +29,6 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
       render 'new'

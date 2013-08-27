@@ -6,6 +6,8 @@ class ProjectsController < ApplicationController
     if signed_in?
       @projects = current_user.projects
       @tasks = Task.all
+    else
+      render 'sessions/new'
     end
   end
 

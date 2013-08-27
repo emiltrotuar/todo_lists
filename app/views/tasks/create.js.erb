@@ -17,12 +17,6 @@ function createNode(){
 		opacity: 0.5,
 		handle: '.reorder',
 		containment: 'parent',
-		helper: function(e, ui) {
-			ui.children().each(function() {
-				$(this).width($(this).width());
-			});
-			return ui;
-		},
 		start: function(event, ui) {
 			$('table').css('table-layout', 'auto');
 		},

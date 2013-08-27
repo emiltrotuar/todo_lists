@@ -1,9 +1,0 @@
-<% if signed_in? %>
-  <h1>Welcome home, bracho!</h1>
-<% else %>
-  <div class="center hero-unit">
-    <h1>Welcome to the Todo Lists</h1>
-    <%= link_to "Sign up now!", signup_path, 
-                                class: "btn btn-large btn-primary" %>
-  </div>
-<% end %>

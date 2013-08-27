@@ -58,7 +58,7 @@ $(function() {
 		event.stopPropagation();
 	});
 
-	$(document).on('keypress', '.ed_prj_inp', function(event) { /* change project name */
+	$(document).on('keydown', '.ed_prj_inp', function(event) { /* change project name */
 		if (event.keyCode === 13) {
 			$(this).closest('.draggable').find('.task_input').focus();
 			$(this).parent().submit();
@@ -70,7 +70,7 @@ $(function() {
 		}
 	});
 
-	$(document).on('keypress', '.ed_task_inp, .dp', function(event) { /* change task name */
+	$(document).on('keydown', '.ed_task_inp, .dp', function(event) { /* change task name */
 		if (event.keyCode === 13) {
 			ct($(this));
 		} else if (event.keyCode === 27) {
@@ -95,11 +95,12 @@ $(function() {
 			if ($(this).closest('tr').find('td:nth-child(3):hover').length != 0) {
 				$(this).closest('tr').find('.ed_task').show();
 			}
+			$(this).closest('tr').find('#task_complete').prop('disabled', false);
 			$(this).next().val('');
 			$(this).parent().submit();
 	});
 
-	$(document).on('keypress', '#project_name', function(event) {
+	$(document).on('keydown', '#project_name', function(event) {
 		if (event.keyCode === 27) {
 			$(this).closest('div[align=center]').prev().find('.draggable:first-child').find('.task_input').focus();
 			$(this).closest('form').prev().show();
@@ -142,12 +143,6 @@ $(function() {
 		opacity: 0.5,
 		handle: '.reorder',
 		containment: 'parent',
-		helper: function(e, ui) {
-			ui.children().each(function() {
-				$(this).width($(this).width());
-			});
-			return ui;
-		},
 		start: function(event, ui) {
 			$('table').css('table-layout', 'auto');
 		},
@@ -181,6 +176,7 @@ $(function() {
 		if (th.closest('tr').find('td:nth-child(3):hover').length != 0) {
 			th.closest('tr').find('.ed_task').show();
 		}
+		th.closest('tr').find('#task_complete').prop('disabled', true);
 		th.parent().submit();
 	}
 
@@ -196,6 +192,7 @@ $(function() {
 		if (th.closest('form').find('.dp').val() === ''){
 			th.closest('td').find('.date').css('display', 'none');
 		} else { th.closest('td').find('.date').css('display', 'inline');}
+		th.closest('tr').find('#task_complete').prop('disabled', false);
 		th.parent().prev().show();
 		th.parent().remove();
 	}
