@@ -13,6 +13,7 @@ class UsersController < ApplicationController
         render 'denied'
       end
     else
+      flash[:alert] = "You should be logged in"
       render 'sessions/new'
     end
   end
