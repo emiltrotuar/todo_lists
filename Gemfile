@@ -10,6 +10,7 @@ gem 'jquery-rails', '2.0.2'
 gem "jquery-ui-rails", "~> 4.0.3"
 
 group :development, :test do
+  gem 'jasmine'
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
   gem 'spork', '0.9.2'
