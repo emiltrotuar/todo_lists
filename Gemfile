@@ -11,6 +11,7 @@ gem "jquery-ui-rails", "~> 4.0.3"
 
 group :development, :test do
   gem 'jasmine'
+  gem 'jasmine-headless-webkit', :git => 'https://github.com/johnbintz/jasmine-headless-webkit.git', branch: 'master'
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
   gem 'spork', '0.9.2'

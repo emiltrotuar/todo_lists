@@ -5,8 +5,8 @@
 @import "bootstrap";
 
 @mixin box_sizing {
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -15,97 +15,89 @@ body {
 }
 
 .container {
-	position: fixed;
-	left: 100px;
+  position: fixed;
+  left: 100px;
+  nav {
+    position: fixed;
+    right: 100px;
+  }
 }
 
-.container nav {
-	position: fixed;
-	right: 100px;
-}
-
-.controls, input-prepend, input-append{
+.controls, input-prepend, input-append {
   display: block;
-	background-color: #C9C9C9;
-	margin-bottom: 0px;
+  background-color: #C9C9C9;
+  margin-bottom: 0px;
 }
 
 .controls .task_input {
-	width: 345px;
+  width: 345px;
 }
 
 .date {
-	float: right;
-	font-size: 12px;
-	border: none;
-	margin: auto;
-	color: #7A7A7A;
+  float: right;
+  font-size: 12px;
+  border: none;
+  margin: auto;
+  color: #7A7A7A;
 }
 
 .dp {
-	float: right;
-	width: 135px;
-	display: inline-block;
-	height: 20px !important;
-	padding: 1px 5px !important;
-	margin: 0 3px 0 0 !important;
-	text-align: center;
-	border: medium none;
+  float: right;
+  width: 135px;
+  display: inline-block;
+  height: 20px !important;
+  padding: 1px 5px !important;
+  margin: 0 3px 0 0 !important;
+  text-align: center;
+  border: medium none;
   outline: medium none;
 }
 
 .draggable {
-	background-color: #DCDCDC;
-	border-radius: 5px;
-	width: 490px;
+  background-color: #DCDCDC;
+  border-radius: 5px;
+  width: 490px;
   margin: 0 auto;
-}
-
-.draggable + .draggable {
-	margin-top: 10px;
+  + .draggable {
+    margin-top: 10px;
+  }
 }
 
 .ed_prj:hover, .prj_actions:hover, .del_prj:hover, tr:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .ed_task_buttons {
-	display: inline-block;
-	border-radius: 3px;
-	border: 1px solid #B7B7B7;
-	padding: 0 2px;
-	line-height:15px;
-}
-
-.ed_task_buttons:hover {
-	background-color: #FFFFDC;
+  display: inline-block;
+  border-radius: 3px;
+  border: 1px solid #B7B7B7;
+  padding: 0 2px;
+  line-height: 15px;
+  &:hover {
+    background-color: #FFFFDC;
+  }
 }
 
 .ed_task_inp, .ed_prj_inp {
-	margin-bottom: 0px !important;
-	height: auto;
-	width: auto;
-	padding: 0 !important;
+  margin-bottom: 0px !important;
+  height: auto;
+  width: auto;
+  padding: 0 !important;
 }
 
 .ed_task_inp {
-	width: 330px;
+  width: 330px;
 }
 
 .ed_prj_inp {
-	max-width: 353px;
-	background-color: #F0F0F0 !important;
+  max-width: 353px;
+  background-color: #F0F0F0 !important;
 }
 
 #error_explanation ul {
-  color:red;
+  color: red;
   list-style: none;
   margin: 0 0 18px 0;
-}
-
-.fold, .unfold {
-	height: 27px;	
-	margin: 8px 0 8px 8px !important;
 }
 
 .field_with_errors {
@@ -113,18 +105,22 @@ body {
   @extend .error;
  }
 
+.fold, .unfold {
+  height: 27px;
+  margin: 8px 0 8px 8px !important;
+}
+
 .forms {
   width: 300px;
   margin: 0 auto;
-}
-
-.forms input {
-  height: auto;
+  input {
+    height: auto;
+  }
 }
 
 form {
-	display: inline-block;
-	margin: auto;
+  display: inline-block;
+  margin: auto;
 }
 
 h1 {
@@ -137,11 +133,10 @@ html {
 }
 
 img {
-	opacity: .3;
-}
-
-img:hover {
-	opacity: 1;
+  opacity: .3;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 input {
@@ -149,9 +144,8 @@ input {
   @include box_sizing;
 }
 
-input::-moz-selection, 
-textarea::-moz-selection {
-    background-color: #A5C7F4;
+input::-moz-selection, textarea::-moz-selection {
+  background-color: #A5C7F4;
 }
 
 #logo {
@@ -164,50 +158,44 @@ textarea::-moz-selection {
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
-}
-
-#logo:hover {
-	color: white;
-	text-decoration: none;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 .new_task {
-	margin: 8px 8px 8px 0;
+  margin: 8px 8px 8px 0;
 }
 
-
 #new_project, #new_project_link {
-	margin: 10px 0 30px 0;
+  margin: 10px 0 30px 0;
 }
 
 .prj_actions {
-	background-color: #4A5C9A;
-}
-
-.prj_actions .name {
-	position: relative;
-	margin: 5px 5px 5px 20px;
-	color: white;
-	max-width: 353px;
-	word-wrap: break-word;
-}
-
-.prj_actions .del_prj {
-	position: relative;
-	float: right;
-	margin: 5px 10px 0 0;
-}
-
-.prj_actions > img {
-	margin: 0 0 0 15px;
-}
-
-.prj_actions form {
-	margin: 5px 5px 5px 20px;
+  background-color: #4A5C9A;
+  .name {
+    position: relative;
+    margin: 5px 5px 5px 20px;
+    color: white;
+    max-width: 353px;
+    word-wrap: break-word;
+  }
+  .del_prj {
+    position: relative;
+    float: right;
+    margin: 5px 10px 0 0;
+  }
+  > img {
+    margin: 0 0 0 15px;
+  }
+  form {
+    margin: 5px 5px 5px 20px;
+  }
 }
 
 #project_name {
-	height: auto;
+  height: auto;
 }
 
 p {
@@ -215,64 +203,77 @@ p {
 }
 
 #scroll_up {
-	position: fixed;
-	height: 100%;
-	width: 100px;
-	opacity: 0;
-	margin-top: -20px;
-	padding: 13px 0;
-	background: #EAFAFD;
+  position: fixed;
+  height: 100%;
+  width: 100px;
+  opacity: 0;
+  margin-top: -20px;
+  padding: 13px 0;
+  background: #EAFAFD;
 }
 
-
 .span9 {
-	margin-left: 0px;
+  margin-left: 0px;
 }
 
 table {
   table-layout: fixed;
-	border: 0px; 
+  border: 0px;
   width: 100%;
 }
 
-td:nth-child(2) {
-	word-wrap: break-word;
-	padding-left: 10px;
+td {
+  &:nth-child(2) {
+    word-wrap: break-word;
+    padding-left: 10px;
+    form {
+      margin-top: 3px;
+    }
+  }
+  input[type=checkbox] {
+    position: relative;
+    margin-bottom: 5px;
+  }
+  p {
+    display: inline;
+    position: relative;
+    vertical-align: middle;
+  }
 }
 
-td:nth-child(2) form {
-	margin-top: 3px;
+tr {
+  border-top: 1px solid #B7BAC1;
+  line-height: 25px;
+  + tr {
+    border-top: 1px solid #B7BAC1;
+  }
 }
 
-td input[type=checkbox] {
-	position: relative;
-	margin-bottom: 5px;
+td + td {
+  border-left: 1px solid #B7BAC1;
 }
-
-td p {
-	display: inline;
-	position: relative;
-	vertical-align: middle;
-}
-
-tr { border-top: 1px solid #B7BAC1; line-height: 25px; }
-tr + tr { border-top: 1px solid #B7BAC1; }
-td + td { border-left: 1px solid #B7BAC1; }
 
 .task_input {
-	height: 27px !important;
+  height: 27px !important;
 }
 
-#up, #up:hover {
-	display: block;
-	margin: 0 0 0 35px;
-	width: 24px;
-	height: 24px;
-	opacity: .3;
+#up {
+  display: block;
+  margin: 0 0 0 35px;
+  width: 24px;
+  height: 24px;
+  opacity: .3;
+  &:hover {
+    display: block;
+    margin: 0 0 0 35px;
+    width: 24px;
+    height: 24px;
+    opacity: .3;
+  }
 }
 
 .x {
-	left: 67%;
-	position: relative;
-	vertical-align: baseline;
+  left: 67%;
+  position: relative;
+  vertical-align: baseline;
 }
