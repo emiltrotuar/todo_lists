@@ -1,4 +1,6 @@
 TodoLists::Application.routes.draw do
+  use_doorkeeper
+
   resources :users, except: :index
   resources :projects do
    post :sort, :sortp, on: :collection

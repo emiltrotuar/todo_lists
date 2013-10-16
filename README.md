@@ -1,4 +1,4 @@
-Task manager http://mysterious-bastion-4641.herokuapp.com/
+Task manager http://emiltrotuar-todolists.herokuapp.com/
 
 Setup
 
