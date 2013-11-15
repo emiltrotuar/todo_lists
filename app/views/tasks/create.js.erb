@@ -35,6 +35,12 @@ function createNode(){
 	}).append('<%= j render(@task) %>');
 	$(path+" tr:last-child").hide().fadeIn(300);
 	$('#edit_task_<%= @task.id %>').submitOnCheck();
+	task_content = $('p#task_content_<%= @task.id %>').html()
+	link = task_content.match(/https?:\/\/\w+\.\S*/)
+	if(link){
+		task_content_with_link = task_content.replace(link, '<a href="'+link+'">'+link+"</a>")
+		$('p#task_content_<%= @task.id %>').html(task_content_with_link)
+	}
 	$('#task_content_<%= @task.project_id %>').val('').focus();
 	if ($(path).closest('.task_list').css('display') === 'none')
 		$(path).closest('.draggable').find('.unfold').click();

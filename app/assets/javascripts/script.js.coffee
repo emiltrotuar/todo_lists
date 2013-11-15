@@ -163,6 +163,13 @@ $ ->
     $(this).find("td:nth-child(3)").find("*").hide()
     $(this).find(".ed_task").hide()
 
+  $.each $("tr"), (i, v) ->
+    task_content = $("tr:eq(" + i + ")").find("td:nth-child(2) p").html()
+    link = task_content.match(/https?:\/\/\w+\.\S*/)
+    if link
+      task_content_with_link = task_content.replace(link, "<a href=\"" + link + "\">" + link + "</a>")
+      $("tr:eq(" + i + ")").find("td:nth-child(2) p").html task_content_with_link
+
 jQuery.fn.submitOnCheck = -> 
   @find("input[type=checkbox]").click ->
     $(this).parent("form").submit()
