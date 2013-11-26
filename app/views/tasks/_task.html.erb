@@ -11,7 +11,7 @@
 			<% else %>
 				<span class="date" style="display: none"></span>
 			<% end %>
-			<p id="task_content_<%= task.id %>" style="color:black"><%= task.content %></p>
+			<p id="task_content_<%= task.id %>" style="color:black"><%= raw task.content %></p>
 		</td>
 		<td width="90px" align="center">
 			<%= image_tag "arrows.png", class: "reorder", size: "22x22", border: 0, style: "display: none" %>

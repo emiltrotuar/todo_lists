@@ -18,6 +18,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'
+  gem 'pry-rails'
 end
 
 # Gems used only for assets and not required

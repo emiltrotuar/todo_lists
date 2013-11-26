@@ -5,7 +5,6 @@ class ProjectsController < ApplicationController
   def index
     if signed_in?
       @projects = current_user.projects
-      @tasks = Task.all
     else
       render 'sessions/new'
     end
