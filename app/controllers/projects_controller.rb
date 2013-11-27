@@ -5,6 +5,16 @@ class ProjectsController < ApplicationController
   def index
     if signed_in?
       @projects = current_user.projects
+      @projects.each do |project|
+        project.tasks.each do |task|
+          link = task.content.match(/https?:\/\/\w+\.\S*/)
+          if link
+            link =link.to_s
+            task.content.sub!(link, '<a href="'+link+'">'+link+'</a>')
+          end
+        end
+      end
+      puts @projects.first.tasks
     else
       render 'sessions/new'
     end
