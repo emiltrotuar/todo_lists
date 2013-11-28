@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     if signed_in?
-      @projects = current_user.projects
+      @projects = current_projects
       @projects.each do |project|
         project.tasks.each do |task|
           link = task.content.match(/https?:\/\/\w+\.\S*/)
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.create!(params[:project])
+    @project = current_projects.create!(params[:project])
     @project.move_to_bottom
     respond_to do |format|
       format.html {redirect_to projects_url}
@@ -34,11 +34,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+    @project = current_projects.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = current_projects.find(params[:id])
     @project.update_attributes!(params[:project])
     respond_to do |format|
      format.html {redirect_to projects_url}
@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.destroy(params[:id])
+    @project = current_projects.destroy(params[:id])
      respond_to do |format|
      format.html { render nothing: true }
      format.js { render nothing: true }
@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
   end
 
   def sort
-    @project = current_user.projects.find(params[:prj_id])
+    @project = current_projects.find(params[:prj_id])
     @tasks = @project.tasks
     @tasks.each do |task|
       task.position = params['task'].index(task.id.to_s) + 1
@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
   end
 
   def sortp
-    @projects = current_user.projects
+    @projects = current_projects
     @projects.each do |project|
       project.position = params['project'].index(project.id.to_s) + 1
       project.save
@@ -76,8 +76,12 @@ class ProjectsController < ApplicationController
   private
 
     def correct_user
-      @project = current_user.projects.find_by_id(params[:id])
+      @project = current_projects.find_by_id(params[:id])
       redirect_to root_url if @project.nil?
+    end
+
+    def current_projects
+      current_user.projects
     end
 
 end

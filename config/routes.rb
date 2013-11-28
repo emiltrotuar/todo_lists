@@ -1,4 +1,7 @@
 TodoLists::Application.routes.draw do
+  resources :notes
+
+
   use_doorkeeper
 
   resources :users, except: :index
@@ -13,6 +16,7 @@ TodoLists::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/sessions',  to: 'sessions#create'
   match '/signout', to: 'sessions#destroy', via: :delete
+  post '/notes', to: 'notes#create'
  
   # The priority is based upon order of creation:
   # first created -> highest priority.
