@@ -16,3 +16,7 @@
 
 .jhw-cache/
 todo.sublime-project
+
+Capfile
+config/deploy.rb
+config/deploy/

@@ -36,6 +36,11 @@ group :test do
   gem 'database_cleaner', '0.7.0'
 end
 
+group :development do
+  gem 'whenever', :require => false
+  gem "capistrano-rails"
+end
+
 group :production do
   gem 'pg', '0.12.2'
 end
