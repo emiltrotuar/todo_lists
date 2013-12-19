@@ -39,6 +39,8 @@ end
 group :development do
   gem 'whenever', :require => false
   gem "capistrano-rails"
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
 end
 
 group :production do
