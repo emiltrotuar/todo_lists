@@ -18,5 +18,6 @@
 todo.sublime-project
 
 Capfile
-config/deploy.rb
 config/deploy/
+config/deploy.rb
+config/unicorn.rb

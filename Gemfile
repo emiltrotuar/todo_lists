@@ -9,6 +9,7 @@ gem 'doorkeeper', '~> 0.7.0'
 gem 'faker', '1.0.1'
 gem 'jquery-rails', '2.0.2'
 gem "jquery-ui-rails", "~> 4.0.3"
+gem 'unicorn'
 
 group :development, :test do
   gem 'jasmine'
@@ -37,7 +38,6 @@ group :test do
 end
 
 group :development do
-  gem 'whenever', :require => false
   gem "capistrano-rails"
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
