@@ -16,8 +16,8 @@
 
 .jhw-cache/
 todo.sublime-project
+todo.sublime-workspace
 
 Capfile
 config/deploy/
 config/deploy.rb
-config/unicorn.rb

@@ -9,7 +9,6 @@ gem 'doorkeeper', '~> 0.7.0'
 gem 'faker', '1.0.1'
 gem 'jquery-rails', '2.0.2'
 gem "jquery-ui-rails", "~> 4.0.3"
-gem 'unicorn'
 
 group :development, :test do
   gem 'jasmine'
@@ -44,5 +43,6 @@ group :development do
 end
 
 group :production do
+  gem 'unicorn'
   gem 'pg', '0.12.2'
 end
