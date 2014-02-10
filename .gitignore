@@ -21,3 +21,6 @@ todo.sublime-workspace
 Capfile
 config/deploy/
 config/deploy.rb
+
+public/assets
+vendor/bundle
