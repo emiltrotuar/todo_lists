@@ -24,3 +24,6 @@ config/deploy.rb
 
 public/assets
 vendor/bundle
+
+# Ignore application configuration
+/config/application.yml
