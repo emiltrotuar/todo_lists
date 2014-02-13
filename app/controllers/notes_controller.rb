@@ -41,8 +41,9 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.create(params[:note])
-
-    render nothing: true
+    respond_to do |format|
+      format.json { render json: @note }
+    end
   end
 
   # PUT /notes/1

@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
           end
         end
       end
-      puts @projects.first.tasks
     else
       render 'sessions/new'
     end

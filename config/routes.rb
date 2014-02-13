@@ -12,10 +12,10 @@ TodoLists::Application.routes.draw do
   
   resources :sessions,   only: [:new, :create, :destroy]
   root to: 'projects#index'
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/sessions',  to: 'sessions#create'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  match '/signup',   to: 'users#new'
+  match '/signin',   to: 'sessions#new'
+  match '/sessions', to: 'sessions#create'
+  match '/signout',  to: 'sessions#destroy', via: :delete
  
   # The priority is based upon order of creation:
   # first created -> highest priority.
