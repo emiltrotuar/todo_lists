@@ -10,6 +10,8 @@ gem 'faker', '1.0.1'
 gem 'jquery-rails', '2.0.2'
 gem 'jquery-ui-rails', '~> 4.0.3'
 gem 'figaro'
+gem 'ember-rails'
+gem 'ember-source', '1.4.0'
 
 group :development, :test do
   gem 'jasmine'
