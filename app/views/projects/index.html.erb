@@ -1,10 +1,9 @@
 <div id="scroll_up">
-	<img src="/assets/arrow.png" id="up">
+  <img src="/assets/arrow.png" id="up">
 </div>
 <div id="projects" class="sortable">
-	<%= render @projects %>
+  <%= render @projects %>
 </div>
 <div id="new" align="center">
-	<%= link_to "New Project", new_project_path, id: "new_project_link", remote: true, class: "btn btn-large btn-primary" %>
+  <%= link_to "New Project", new_project_path, id: "new_project_link", remote: true, class: "btn btn-large btn-primary" %>
 </div>
-

@@ -11,7 +11,7 @@ TodoLists::Application.routes.draw do
   resources :tasks
   
   resources :sessions,   only: [:new, :create, :destroy]
-  root to: 'projects#index'
+  root to: 'application#index'
   match '/signup',   to: 'users#new'
   match '/signin',   to: 'sessions#new'
   match '/sessions', to: 'sessions#create'

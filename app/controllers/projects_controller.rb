@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
           end
         end
       end
+      render json: @projects
     else
       render 'sessions/new'
     end

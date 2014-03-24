@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 gem 'acts_as_list'
@@ -7,11 +6,15 @@ gem 'bootstrap-sass', '2.1'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'doorkeeper', '~> 0.7.0'
 gem 'faker', '1.0.1'
-gem 'jquery-rails', '2.0.2'
+gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 4.0.3'
+gem 'jquery-cookie-rails'
 gem 'figaro'
+gem 'underscore-rails'
+gem 'underscore_extensions'
 gem 'ember-rails'
 gem 'ember-source', '1.4.0'
+gem 'emblem-rails'
 
 group :development, :test do
   gem 'jasmine'
@@ -27,9 +30,10 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '3.2.5'
-  gem 'coffee-rails', '3.2.2'
-  gem 'uglifier', '1.2.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'ember_script-rails'
 end
 
 group :test do
@@ -37,6 +41,7 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '0.7.0'
+  gem 'jasmine-stories'
 end
 
 group :development do

@@ -1,0 +1,6 @@
+.project
+  h2 title
+  input 'newTask' placeholder='new task'
+  ul
+    each task in model
+      li = task.title

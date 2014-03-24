@@ -1,0 +1,12 @@
+button click='newProject' New Project
+
+= input placeholder='new project name' value=newTitle action='createProject'
+
+#projects
+  ul
+    each project in model itemController='project'
+      li 
+        = project.title
+        button{action 'removeProject'} del
+
+
