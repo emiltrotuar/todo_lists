@@ -1,0 +1,7 @@
+input type='checkbox'
+if isEditing
+  = input value=title insert-newline='doneEditing'
+else
+  = title
+button click='edit' edit
+button{action 'removeTask' task} del

@@ -4,9 +4,7 @@ button click='newProject' New Project
 
 #projects
   ul
-    each project in model itemController='project'
-      li 
-        = project.title
-        button{action 'removeProject'} del
+    each project in model
+      li = render 'project' project
 
 

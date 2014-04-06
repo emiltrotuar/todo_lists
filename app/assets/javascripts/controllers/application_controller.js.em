@@ -1,0 +1,1 @@
+class TodoLists.ApplicationController extends Ember.ObjectController

@@ -1,0 +1,5 @@
+ul
+  each task in tasks
+    li = render 'task' task
+  else
+    span no tasks yet

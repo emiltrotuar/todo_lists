@@ -1,6 +1,8 @@
-.project
-  h2 title
-  input 'newTask' placeholder='new task'
-  ul
-    each task in model
-      li = task.title
+if isEditing
+  = input value=title insert-newline='doneEditing'
+else
+  = title
+button click='edit' edit
+button{action 'removeProject' project} del
+= input placeholder='new task' value=newTitle action='createTask'
+= partial 'tasks'
