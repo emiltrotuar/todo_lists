@@ -12,7 +12,5 @@
 
 window.TodoLists = Ember.Application.create()
 
-#class TodoLists.ApplicationAdapter extends DS.LSAdapter
-  #namespace: 'todo-lists'
-
-TodoLists.ApplicationAdapter = DS.FixtureAdapter
+class TodoLists.ApplicationAdapter extends DS.LSAdapter
+  namespace: 'todo-lists'
