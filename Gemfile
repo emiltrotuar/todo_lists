@@ -1,29 +1,22 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
-gem 'acts_as_list'
-gem 'bootstrap-sass', '2.1'
-gem 'bcrypt-ruby', '3.0.1'
-gem 'doorkeeper', '~> 0.7.0'
-gem 'faker', '1.0.1'
+gem 'rails'
+gem 'bootstrap-sass'
+gem 'bcrypt-ruby'
 gem 'jquery-rails'
-gem 'jquery-ui-rails', '~> 4.0.3'
+gem 'jquery-ui-rails'
 gem 'jquery-cookie-rails'
 gem 'figaro'
 gem 'underscore-rails'
 gem 'underscore_extensions'
 gem 'ember-rails'
-gem 'ember-source', '1.4.0'
+gem 'ember-source'
 gem 'emblem-rails'
 
 group :development, :test do
   gem 'jasmine'
-  gem 'sqlite3', '1.3.5'
-  gem 'rspec-rails', '2.11.0'
-  gem 'spork', '0.9.2'
-  gem 'guard'
-  gem 'guard-rspec', '1.2.1'
-  gem 'guard-spork', '1.2.0'
+  gem 'sqlite3'
+  gem 'rspec-rails'
   gem 'pry-rails'
 end
 
@@ -32,16 +25,12 @@ end
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'uglifier'
   gem 'ember_script-rails'
 end
 
 group :test do
-  gem 'capybara', '1.1.2'
-  gem 'factory_girl_rails', '4.1.0'
-  gem 'cucumber-rails', '1.2.1', :require => false
-  gem 'database_cleaner', '0.7.0'
-  gem 'jasmine-stories'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -52,5 +41,5 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'pg', '0.12.2'
+  gem 'pg'
 end

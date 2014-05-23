@@ -7,13 +7,15 @@ class TodoLists.ProjectController extends Ember.ObjectController
 
   actions:
     removeProject: (project) ->
-      @removeProject(project)
+      project.deleteRecord()
+      project.save()
 
     edit: ->
       @set 'isEditing', true
 
     doneEditing: ->
       @set 'isEditing', false
+      @content.save()
 
     createTask: ->
       title = @get('newTitle')
@@ -25,10 +27,6 @@ class TodoLists.ProjectController extends Ember.ObjectController
       tasks.pushObject nt
       @set 'newTitle', ''
 
-  removeProject: (project) ->
-    project.deleteRecord()
-    project.save()
-      
 # store.findAll('task').then(function(record){
 #   record.content.forEach(function(rec) {
 #     Ember.run.once(this, function() {

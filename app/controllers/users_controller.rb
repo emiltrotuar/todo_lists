@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def show
     if signed_in?
-      @user = User.find(params[:id])
+      @user = User.find(params.permit[:id])
       @projects = @user.projects
       if @user == current_user
         render 'projects/index'
@@ -23,11 +23,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params.permit[:id])
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(params.permit[:user])
     if @user.save
       sign_in @user
       redirect_to @user
@@ -37,8 +37,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
+    @user = User.find(params.permit[:id])
+    if @user.update_attributes(params.permit[:user])
       flash[:success] = "Profile updated"
       sign_in @user
       redirect_to @user
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    User.find(params.permit[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_url
   end
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find(params.permit[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
 

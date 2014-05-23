@@ -1,8 +1,9 @@
 if isEditing
   = input value=title insert-newline='doneEditing'
 else
-  = title
+  span = title
 button click='edit' edit
 button{action 'removeProject' project} del
 = input placeholder='new task' value=newTitle action='createTask'
+button#create_task click='createTask' Create Task
 = partial 'tasks'

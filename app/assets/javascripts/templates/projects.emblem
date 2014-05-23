@@ -1,10 +1,9 @@
 button click='newProject' New Project
 
-= input placeholder='new project name' value=newTitle action='createProject'
+= input id='new_project' placeholder='new project name' value=newTitle action='createProject'
+button#create_project click='createProject' Create project
 
 #projects
   ul
     each project in model
       li = render 'project' project
-
-
