@@ -11,6 +11,3 @@
 #= require todo_lists
 
 window.TodoLists = Ember.Application.create()
-
-class TodoLists.ApplicationAdapter extends DS.LSAdapter
-  namespace: 'todo-lists'

@@ -23,7 +23,7 @@ body {
   }
 }
 
-.controls, input-prepend, input-append {
+.controls, input-group-addon {
   display: block;
   background-color: #C9C9C9;
   margin-bottom: 0px;
@@ -106,7 +106,6 @@ body {
  }
 
 .fold, .unfold {
-  height: 27px;
   margin: 8px 0 8px 8px !important;
 }
 
@@ -175,11 +174,15 @@ input::-moz-selection, textarea::-moz-selection {
 .prj_actions {
   background-color: #4A5C9A;
   .name {
+    display: inline-block;
     position: relative;
     margin: 5px 5px 5px 20px;
     color: white;
     max-width: 353px;
     word-wrap: break-word;
+    input {
+      color: black
+    }
   }
   .del_prj {
     position: relative;
@@ -254,6 +257,10 @@ tr {
 
 td + td {
   border-left: 1px solid #B7BAC1;
+}
+
+.task_content {
+  color: black
 }
 
 .task_input {

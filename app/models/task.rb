@@ -1,8 +1,7 @@
-class Task < ActiveRecord::Base
-  attr_accessible :content, :complete, :date, :position
-  belongs_to :project
-  validates :project_id, presence: true
-  validates :content, presence: true, length: { maximum: 100 }
-  default_scope order: 'tasks.position ASC'
-  acts_as_list scope: :project
+class Task
+  include Mongoid::Document
+
+  field :name, type: String
+
+  embedded_in :project
 end

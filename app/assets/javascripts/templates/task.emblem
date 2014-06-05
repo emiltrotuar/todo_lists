@@ -1,7 +1,11 @@
-input type='checkbox'
-if isEditing
-  = input value=title insert-newline='doneEditing'
-else
-  = title
-button click='edit' edit
-button{action 'removeTask' task} del
+td with='50px' align='center'
+  input#task_complete type='checkbox' checked=isComplete
+td with='333px'
+  if isEditing
+    p.task_content = input value=name insert-newline='doneEditing'
+  else
+    p.task_content = name
+td with='90px' align='center'
+  img.reorder border='0' height='22' src='/assets/arrows.png'
+  button.ed_task click='edit' edit
+  button.del_task{action 'removeTask' task} del

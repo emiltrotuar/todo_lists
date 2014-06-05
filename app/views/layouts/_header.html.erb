@@ -4,21 +4,23 @@
       <%= link_to "todo lists", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <% if signed_in? %>
+          <!-- temporary -->
+          <%# if signed_in? %>
             <li><%= link_to "Projects", root_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <!-- temporary -->
+                <li><%#= link_to "Settings", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Sign out", signout_path, method: "delete" %>
                 </li>
               </ul>
             </li>
-          <% end %>
+          <%# end %>
         </ul>
       </nav>
     </div>

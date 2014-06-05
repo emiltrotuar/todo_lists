@@ -1,23 +1,11 @@
 class ProjectsController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy]
-  before_filter :correct_user,   only: :destroy
+  respond_to :json
+  # before_filter :signed_in_user, only: [:create, :destroy]
+  # before_filter :correct_user,   only: :destroy
 
   def index
-    if signed_in?
-      @projects = current_projects
-      @projects.each do |project|
-        project.tasks.each do |task|
-          link = task.content.match(/https?:\/\/\w+\.\S*/)
-          if link
-            link =link.to_s
-            task.content.sub!(link, '<a href="'+link+'">'+link+'</a>')
-          end
-        end
-      end
-      render json: @projects
-    else
-      render 'sessions/new'
-    end
+    projects = Project.all
+    respond_with projects
   end
 
   def new
@@ -43,7 +31,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
      format.html {redirect_to projects_url}
      format.js
-   end
+    end
   end
 
   def destroy

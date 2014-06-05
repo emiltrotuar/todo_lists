@@ -1,4 +1,6 @@
-class Note < ActiveRecord::Base
+class Note
+  include Mongoid::Document
+  
   attr_accessible :content
   belongs_to :user
 end

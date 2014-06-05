@@ -1,4 +1,4 @@
 class TodoLists.Task extends DS.Model
-  title: DS.attr 'string'
+  name: DS.attr 'string'
   project: DS.belongsTo 'project'
   

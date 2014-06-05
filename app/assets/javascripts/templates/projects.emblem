@@ -1,9 +1,8 @@
 button click='newProject' New Project
 
-= input id='new_project' placeholder='new project name' value=newTitle action='createProject'
+= input id='new_project' placeholder='new project name' value=newTitle insert-newline='createProject'
 button#create_project click='createProject' Create project
 
 #projects
-  ul
-    each project in model
-      li = render 'project' project
+  each project in model
+    .draggable = render 'project' project

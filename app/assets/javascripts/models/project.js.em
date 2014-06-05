@@ -1,3 +1,3 @@
 class TodoLists.Project extends DS.Model
-  title: DS.attr 'string'
+  name: DS.attr 'string'
   tasks: DS.hasMany 'task'

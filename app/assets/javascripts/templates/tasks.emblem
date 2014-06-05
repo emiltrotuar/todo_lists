@@ -1,5 +1,7 @@
-ul
-  each task in tasks
-    li = render 'task' task
-  else
-    span no tasks yet
+table.table-hover cellpadding='1'
+  tbody
+    each task in tasks
+      tr = render 'task' task
+    else
+      tr
+        td no tasks yet
