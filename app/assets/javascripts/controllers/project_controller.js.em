@@ -1,16 +1,10 @@
 class TodoLists.ProjectController extends Ember.ObjectController
   isEditing: false
 
-  tasks: ~>
-    @store.filter 'task', {}, (task) =>
-      task.get('project') is @.content
-
   actions:
-    removeProject: (project) ->
-      # project.tasks.each (task) ->
-      #   task.deleteRecord()
-      project.deleteRecord()
-      project.save()
+    removeProject: ->
+      @content.deleteRecord()
+      @content.save()
 
     edit: ->
       @set 'isEditing', true
@@ -24,9 +18,9 @@ class TodoLists.ProjectController extends Ember.ObjectController
       nt = @store.createRecord 'task',
         name: name
         project: @.get('content')
-      nt.save()
-      tasks = @content.get('tasks')
-      tasks.pushObject nt
+
+      nt.save() # check if successful
+
       @set 'newTitle', ''
 
 # store = TodoLists.__container__.lookup('store:main')

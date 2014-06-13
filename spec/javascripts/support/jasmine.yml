@@ -25,7 +25,7 @@ src_files:
 #   - stylesheets/*.css
 #
 stylesheets:
-  - stylesheets/**/*.css
+  - assets/application.css
 
 # helpers
 #
@@ -38,6 +38,7 @@ stylesheets:
 #   - helpers/**/*.js
 #
 helpers:
+  - vendor/jquery.mockjax.js
   - helpers/**/*.coffee
 
 # spec_files

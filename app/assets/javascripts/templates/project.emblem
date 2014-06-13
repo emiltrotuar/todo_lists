@@ -5,7 +5,7 @@
   else
     p.name = name
   button.ed_prj click='edit' edit
-  button.del_prj{action 'removeProject' project} del
+  button.del_prj{action 'removeProject'} del
 .controls.input-group
   button.fold.btn.btn-info.input-group-addon
     span.glyphicon.glyphicon-minus

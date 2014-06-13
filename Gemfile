@@ -18,6 +18,7 @@ gem 'underscore-rails'
 
 group :development, :test do
   gem 'jasmine'
+  gem 'pry-nav'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'sqlite3'

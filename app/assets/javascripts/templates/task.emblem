@@ -8,4 +8,4 @@ td with='333px'
 td with='90px' align='center'
   img.reorder border='0' height='22' src='/assets/arrows.png'
   button.ed_task click='edit' edit
-  button.del_task{action 'removeTask' task} del
+  button.del_task{action 'removeTask'} del

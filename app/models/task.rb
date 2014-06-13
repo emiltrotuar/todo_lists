@@ -3,5 +3,5 @@ class Task
 
   field :name, type: String
 
-  embedded_in :project
+  belongs_to :project
 end

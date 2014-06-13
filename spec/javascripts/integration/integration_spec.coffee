@@ -2,9 +2,57 @@ describe 'Integration', ->
 
   describe 'Project', ->
 
-    it 'creates project', (done) ->
-      visit '/projects'
-      fillIn '#new_project', 'testproject'
+    mockTask1 =
+      id: '111'
+      name: 'moket'
+      project: '00000'
+
+    mockTask2 =
+      id: '222'
+      name: 'poket'
+      project: '00000'
+
+    mockProject1 = 
+      id: '00000'
+      name: 'abc'
+      tasks: [mockTask1, mockTask2]
+    
+
+    mockTask3 =
+      id: '333'
+      name: 'rocket'
+      project: '11111'
+
+    mockTask4 =
+      id: '444'
+      name: 'soket'
+      project: '11111'
+
+    mockProject2 = 
+      id: '11111'
+      name: 'xyz'
+      tasks: [mockTask3, mockTask4]
+    
+
+    mockData = { projects: [mockProject1] }
+
+    it 'fetches list of mock projects', (done) ->
+      $.mockjax
+        url: "/projects"
+        responseTime: 0
+        responseText: mockData
+
+      visit('projects').then ->
+        find('#projects .draggable').each (pindex) ->
+          item = $(@).find('.prj_actions p.name').html()
+          expect(item).toMatch mockData.projects[pindex].name
+          $(@).find('.task_list').each (tindex) ->
+            item = $(@).find('.task_content').html()
+            expect(item).toMatch mockData.projects[pindex].tasks[tindex].name
+            done()
+
+    xit 'creates project', (done) ->
+      fillIn '#new_project', 'klm'
       click('#create_project').then ->
         project = find('li span:contains("testproject")').length
         expect(project).toBe 1
@@ -44,7 +92,7 @@ describe 'Integration', ->
 
   describe 'Task', ->
 
-    it 'creates task', (done) ->
+    xit 'creates task', (done) ->
       fillIn '#new_task', 'test123'
       click('#create_task').then ->
         task = find('li span:contains("test123")').length

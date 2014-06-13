@@ -2,9 +2,9 @@ class TodoLists.TaskController extends Ember.ObjectController
   isEditing: false
 
   actions:
-    removeTask: (task) ->
-      task.deleteRecord()
-      task.save()
+    removeTask: ->
+      @content.deleteRecord()
+      @content.save()
 
     edit: ->
       @set 'isEditing', true

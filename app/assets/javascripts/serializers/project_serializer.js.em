@@ -1,5 +1,13 @@
 TodoLists.ProjectSerializer = DS.RESTSerializer.extend
-  normalizeHash:
-    projects: (hash) ->
-      hash.id = hash.id.$oid
-      hash
+
+  extractArray: (store, type, payload, id, requestType) ->
+    tasks = []
+
+    payload.projects.forEach (project) ->
+      tasks = project.tasks
+      taskIds = tasks.mapBy('id')
+      project.tasks = taskIds
+
+    payload = { projects: payload.projects, tasks: tasks }
+
+    super store, type, payload, id, requestType

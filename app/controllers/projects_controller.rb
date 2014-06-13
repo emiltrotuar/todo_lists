@@ -13,37 +13,28 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_projects.create!(params[:project])
-    @project.move_to_bottom
-    respond_to do |format|
-      format.html {redirect_to projects_url}
-      format.js
-    end
+    project = Project.new(name: params[:project][:name])
+    # project.move_to_bottom
+    respond_with project if project.save
   end
 
   def edit
-    @project = current_projects.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def update
-    @project = current_projects.find(params[:id])
-    @project.update_attributes!(params[:project])
-    respond_to do |format|
-     format.html {redirect_to projects_url}
-     format.js
-    end
+    project = Project.find(params[:id])
+    project.update_attributes!(name: params[:project][:name])
+    head :no_content
   end
 
   def destroy
-    @project = current_projects.destroy(params[:id])
-     respond_to do |format|
-     format.html { render nothing: true }
-     format.js { render nothing: true }
-    end
+    project = Project.find(params[:id])
+    head :ok if project.delete
   end
 
   def sort
-    @project = current_projects.find(params[:prj_id])
+    @project = Project.find(params[:prj_id])
     @tasks = @project.tasks
     @tasks.each do |task|
       task.position = params['task'].index(task.id.to_s) + 1
@@ -53,7 +44,7 @@ class ProjectsController < ApplicationController
   end
 
   def sortp
-    @projects = current_projects
+    @projects = Project
     @projects.each do |project|
       project.position = params['project'].index(project.id.to_s) + 1
       project.save

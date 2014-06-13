@@ -1,2 +1,2 @@
 TodoLists.Router.map ->
-  @resource 'projects'
+  @route 'projects'
