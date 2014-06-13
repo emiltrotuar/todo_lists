@@ -34,10 +34,10 @@ describe 'Integration', ->
       tasks: [mockTask3, mockTask4]
     
 
-    mockData = { projects: [mockProject1] }
+    mockData = { projects: [mockProject1, mockProject2] }
 
     it 'fetches list of mock projects', (done) ->
-      $.mockjax
+      idx = $.mockjax
         url: "/projects"
         responseTime: 0
         responseText: mockData
@@ -49,13 +49,21 @@ describe 'Integration', ->
           $(@).find('.task_list').each (tindex) ->
             item = $(@).find('.task_content').html()
             expect(item).toMatch mockData.projects[pindex].tasks[tindex].name
+            $.mockjaxClear idx
             done()
 
-    xit 'creates project', (done) ->
-      fillIn '#new_project', 'klm'
+    it 'adds new project', (done) ->
+      proData = {"project":{"id":"539b0425776d001993090000","name":"2e","tasks":[]}}
+      crp = $.mockjax
+        url: "/projects"
+        responseTime: 0
+        responseText: mockData
+
+      fillIn '#new_project', 'dock123'
       click('#create_project').then ->
-        project = find('li span:contains("testproject")').length
+        project = find('.prj_actions p.name:contains("dock123")').length
         expect(project).toBe 1
+        $.mockjaxClear crp
         done()
 
     xit 'edits project name', (done) ->
@@ -90,7 +98,7 @@ describe 'Integration', ->
         expect(newProjectName).toBe 'some_other_name'
         done()
 
-  describe 'Task', ->
+  xdescribe 'Task', ->
 
     xit 'creates task', (done) ->
       fillIn '#new_task', 'test123'

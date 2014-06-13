@@ -4,8 +4,9 @@ TodoLists.ProjectSerializer = DS.RESTSerializer.extend
     tasks = []
 
     payload.projects.forEach (project) ->
-      tasks = project.tasks
-      taskIds = tasks.mapBy('id')
+      project.tasks.forEach (task) ->
+        tasks.push task
+      taskIds = project.tasks.mapBy('id')
       project.tasks = taskIds
 
     payload = { projects: payload.projects, tasks: tasks }

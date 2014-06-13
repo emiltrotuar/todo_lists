@@ -1,6 +1,5 @@
 class TaskSerializer < ActiveModel::Serializer
   attributes :id, :name, :project
-  # attributes :id, :name
 
   def id
     object.id.to_s
