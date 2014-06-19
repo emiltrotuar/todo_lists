@@ -3,6 +3,6 @@ button click='newProject' New Project
 = input id='new_project' placeholder='new project name' value=newTitle insert-newline='createProject'
 button#create_project click='createProject' Create project
 
-#projects
+#projects.sortable
   each project in model
-    .draggable = render 'project' project
+    render 'project' project

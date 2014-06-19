@@ -1,6 +1,6 @@
 class Note
   include Mongoid::Document
   
-  attr_accessible :content
-  belongs_to :user
+  field :content, type: String
+  # belongs_to :user
 end

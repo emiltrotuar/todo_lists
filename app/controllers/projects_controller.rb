@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   def create
     project = Project.new(name: params[:project][:name])
-    # project.move_to_bottom
+    project.move_to :bottom
     respond_with project if project.save
   end
 
@@ -44,9 +44,9 @@ class ProjectsController < ApplicationController
   end
 
   def sortp
-    @projects = Project
+    @projects = Project.all
     @projects.each do |project|
-      project.position = params['project'].index(project.id.to_s) + 1
+      project.position = params['project'].index(project.id.to_s)
       project.save
     end
     render nothing: true

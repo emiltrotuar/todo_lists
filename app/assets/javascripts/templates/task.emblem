@@ -6,6 +6,6 @@ td with='333px'
   else
     p.task_content = name
 td with='90px' align='center'
-  img.reorder border='0' height='22' src='/assets/arrows.png'
-  button.ed_task click='edit' edit
-  button.del_task{action 'removeTask'} del
+  img.reorder border='0' height='23' src='/assets/arrows.png'
+  img click='edit' border='0'  height='16' src='/assets/edit.png'
+  img click='removeTask' border='0' height='16' src='/assets/del.png'

@@ -1,16 +1,17 @@
-.prj_actions
-  img alt='Notepad' border='0' height='12' src='/assets/notepad.png'
-  if isEditing
-    p.name = input value=name insert-newline='doneEditing'
-  else
-    p.name = name
-  button.ed_prj click='edit' edit
-  button.del_prj{action 'removeProject'} del
-.controls.input-group
-  button.fold.btn.btn-info.input-group-addon
-    span.glyphicon.glyphicon-minus
-  / button.unfold.btn.btn-info.input-group-addon
-  /   span.glyphicon.glyphicon-plus
-  = input class='task_input form-control' placeholder="Start typing here to create task..." value=newTitle insert-newline='createTask'
-  input.addbutt.btn.btn-success.input-group-addon click='createTask' value='Create Task'
-.task_list = partial 'tasks'
+.draggable id=projectId
+  .prj_actions
+    img alt='Notepad' border='0' height='12' src='/assets/notepad.png'
+    if isEditing
+      p.name = input value=name insert-newline='doneEditing'
+    else
+      p.name = name
+    img click='edit' border='0'  height='16' src='/assets/edit.png'
+    img click='removeProject' border='0' height='16' src='/assets/del.png'
+  .controls.input-group
+    button.fold.btn.btn-info.input-group-addon
+      span.glyphicon.glyphicon-minus
+    / button.unfold.btn.btn-info.input-group-addon
+    /   span.glyphicon.glyphicon-plus
+    = input class='task_input form-control' placeholder="Start typing here to create task..." value=newTitle insert-newline='createTask'
+    input.addbutt.btn.btn-success.input-group-addon click='createTask' value='Create Task'
+  .task_list = partial 'tasks'

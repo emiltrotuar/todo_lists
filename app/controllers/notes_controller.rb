@@ -1,49 +1,20 @@
 class NotesController < ApplicationController
+  respond_to :json
+
+  skip_before_action :verify_authenticity_token, only: :create
+
   # GET /notes
   # GET /notes.json
   def index
     @notes = Note.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @notes }
-    end
-  end
-
-  # GET /notes/1
-  # GET /notes/1.json
-  def show
-    @note = Note.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @note }
-    end
-  end
-
-  # GET /notes/new
-  # GET /notes/new.json
-  def new
-    @note = Note.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @note }
-    end
-  end
-
-  # GET /notes/1/edit
-  def edit
-    @note = Note.find(params[:id])
+    respond_with @notes
   end
 
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.create(params[:note])
-    respond_to do |format|
-      format.json { render json: @note }
-    end
+    @note = Note.create(content: params[:note][:content])
+    respond_with @note
   end
 
   # PUT /notes/1

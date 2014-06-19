@@ -1,5 +1,5 @@
 class User
   include Mongoid::Document
 
-  embeds_many :projects
+  has_many :projects
 end

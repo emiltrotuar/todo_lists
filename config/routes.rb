@@ -1,5 +1,5 @@
 TodoLists::Application.routes.draw do
-  resources :notes
+  resources :notes, except: [:new, :edit]
 
   resources :users, except: :index
   resources :projects do

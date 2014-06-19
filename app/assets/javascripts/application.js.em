@@ -10,4 +10,6 @@
 #= require_self
 #= require todo_lists
 
-window.TodoLists = Ember.Application.create()
+window.TodoLists = Ember.Application.create
+
+  LOG_TRANSITIONS: true

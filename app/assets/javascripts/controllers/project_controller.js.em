@@ -1,6 +1,9 @@
 class TodoLists.ProjectController extends Ember.ObjectController
   isEditing: false
 
+  projectId: ~>
+    "project_#{@id}"
+
   actions:
     removeProject: ->
       @content.deleteRecord()
@@ -22,13 +25,3 @@ class TodoLists.ProjectController extends Ember.ObjectController
       nt.save() # check if successful
 
       @set 'newTitle', ''
-
-# store = TodoLists.__container__.lookup('store:main')
-# store.findAll('task').then(function(record){
-#   record.content.forEach(function(rec) {
-#     Ember.run.once(this, function() {
-#        rec.deleteRecord();
-#        rec.save();
-#     });
-#   }, this);
-# });

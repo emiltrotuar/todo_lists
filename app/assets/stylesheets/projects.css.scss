@@ -147,6 +147,10 @@ input::-moz-selection, textarea::-moz-selection {
   background-color: #A5C7F4;
 }
 
+.input-group .form-control {
+  float: none;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
