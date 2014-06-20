@@ -19,7 +19,8 @@ class TasksController < ApplicationController
   def update
     # project = Project.find(params[:task][:project])
     task = Task.find(params[:id])
-    task.update_attributes!(name: params[:task][:name])
+    task.update_attributes!(name: params[:task][:name],
+                            done: params[:task][:done])
     head :no_content # check if it really saved!
   end
 

@@ -1,5 +1,6 @@
 class TodoLists.ProjectController extends Ember.ObjectController
   isEditing: false
+  tmpName: null
 
   projectId: ~>
     "project_#{@id}"
@@ -11,17 +12,21 @@ class TodoLists.ProjectController extends Ember.ObjectController
 
     edit: ->
       @set 'isEditing', true
+      @tmpName = @name
 
     doneEditing: ->
       @set 'isEditing', false
       @content.save()
 
+    cancelEditing: ->
+      @set 'isEditing', false
+      @name = @tmpName
+
     createTask: ->
       name = @get('newTitle')
+      return if not name
       nt = @store.createRecord 'task',
         name: name
         project: @.get('content')
-
-      nt.save() # check if successful
-
+      nt.save()
       @set 'newTitle', ''

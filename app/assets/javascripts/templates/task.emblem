@@ -1,5 +1,5 @@
 td with='50px' align='center'
-  input#task_complete type='checkbox' checked=isComplete
+  input#task_complete type='checkbox' checked=done
 td with='333px'
   if isEditing
     p.task_content = input value=name insert-newline='doneEditing'

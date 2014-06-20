@@ -5,7 +5,7 @@ class Project
   field :name, type: String
   field :position, type: Integer
 
-  has_many :tasks
+  has_many :tasks, dependent: :delete
   orderable base: 0
   default_scope ->{ order_by(:position.asc) }
 end
