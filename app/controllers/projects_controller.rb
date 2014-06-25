@@ -1,25 +1,16 @@
 class ProjectsController < ApplicationController
   respond_to :json
-  # before_filter :signed_in_user, only: [:create, :destroy]
-  # before_filter :correct_user,   only: :destroy
+  before_action :authenticate_user!
 
   def index
-    projects = Project.all
+    projects = current_user.projects
     respond_with projects
-  end
-
-  def new
-    @project = Project.new
   end
 
   def create
     project = Project.new(name: params[:project][:name])
     project.move_to :bottom
     respond_with project if project.save
-  end
-
-  def edit
-    @project = Project.find(params[:id])
   end
 
   def update
@@ -37,7 +28,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:prj_id])
     @tasks = @project.tasks
     @tasks.each do |task|
-      task.position = params['task'].index(task.id.to_s) + 1
+      task.position = params['task'].index(task.id.to_s)
       task.save
     end
     render nothing: true
@@ -62,5 +53,4 @@ class ProjectsController < ApplicationController
     def current_projects
       current_user.projects
     end
-
 end

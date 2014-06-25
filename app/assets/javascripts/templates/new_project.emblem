@@ -1,0 +1,7 @@
+if isButtonNew
+  #new_project align='center'
+    span.btn.btn-primary.btn-lg click='toggleNew' New Project 
+else
+ .controls.input-group#new_project_form
+    = input id='project_name' placeholder='Project name...' value=newTitle insert-newline='createProject' escape-press='toggleNew'
+    span.btn.btn-primary click='createProject' Create project

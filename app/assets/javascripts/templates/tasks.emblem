@@ -1,7 +1,8 @@
-table.table-hover cellpadding='1'
-  tbody
-    each task in tasks
-      tr = render 'task' task
-    else
-      tr
-        td no tasks yet
+.task_list
+  table.table-hover cellpadding='1'
+    tbody
+      each task in tasks
+        render 'task' task
+      else
+        tr
+          td no tasks yet

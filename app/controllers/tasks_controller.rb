@@ -3,15 +3,11 @@ class TasksController < ApplicationController
   # before_filter :signed_in_user, only: [:create, :destroy]
   # before_filter :find_task, only: [:edit, :update, :destroy]
 
-  def new
-    @task = Task.new
-  end
-
   def create
     # @task = current_user.projects.find(params[:prj_id]).tasks.create!(params[:task])
     project = Project.find(params[:task][:project])
     task = project.tasks.create!(name: params[:task][:name])
-    # task.move_to_bottom
+    task.move_to :bottom
     # check_for_link
     respond_with task
   end
@@ -42,5 +38,4 @@ class TasksController < ApplicationController
     def find_task
       @task = current_user.tasks.find(params[:id])
     end
-
 end

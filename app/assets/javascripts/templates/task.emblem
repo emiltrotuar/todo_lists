@@ -2,7 +2,7 @@ td with='50px' align='center'
   input#task_complete type='checkbox' checked=done
 td with='333px'
   if isEditing
-    p.task_content = input value=name insert-newline='doneEditing'
+    p.task_content = input value=name insert-newline='doneEditing' escape-press='cancelEditing'
   else
     p.task_content = name
 td with='90px' align='center'

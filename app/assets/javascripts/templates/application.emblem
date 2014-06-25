@@ -1,1 +1,3 @@
+if TodoLists.authenticated
+  a click='signOut' sign out
 outlet

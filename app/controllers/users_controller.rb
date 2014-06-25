@@ -1,29 +1,10 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update]
-  before_filter :correct_user,   only: [:edit, :update]
-  before_filter :admin_user,     only: :destroy
+  respond_to :json
   
-  def show
-    if signed_in?
-      @user = User.find(params.permit[:id])
-      @projects = @user.projects
-      if @user == current_user
-        render 'projects/index'
-      else 
-        render 'denied'
-      end
-    else
-      flash[:alert] = "You should be logged in"
-      render 'sessions/new'
-    end
-  end
+  before_action :authenticate_user!, only: [:update, :me]
 
-  def new
-    @user = User.new
-  end
-
-  def edit
-    @user = User.find(params.permit[:id])
+  def me
+    respond_with current_user
   end
 
   def create
@@ -52,15 +33,4 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed."
     redirect_to users_url
   end
-
-  private
-
-    def correct_user
-      @user = User.find(params.permit[:id])
-      redirect_to(root_path) unless current_user?(@user)
-    end
-
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
-    end
 end

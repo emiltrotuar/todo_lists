@@ -10,8 +10,8 @@
   box-sizing: border-box;
 }
 
-body {
-  padding-top: 60px;
+a {
+  cursor: pointer
 }
 
 .container {
@@ -57,10 +57,7 @@ body {
   background-color: #DCDCDC;
   border-radius: 5px;
   width: 490px;
-  margin: 0 auto;
-  + .draggable {
-    margin-top: 10px;
-  }
+  margin: 10px auto 0;
 }
 
 .ed_prj:hover, .prj_actions:hover, .del_prj:hover, tr:hover {
@@ -105,7 +102,7 @@ body {
   @extend .error;
  }
 
-.fold, .unfold {
+.fold {
   margin: 8px 0 8px 8px !important;
 }
 
@@ -171,8 +168,12 @@ input::-moz-selection, textarea::-moz-selection {
   margin: 8px 8px 8px 0;
 }
 
-#new_project, #new_project_link {
-  margin: 10px 0 30px 0;
+#new_project, #new_project_form {
+  margin: 10px auto
+}
+
+#new_project_form {
+  width: 290px;
 }
 
 .prj_actions {
@@ -203,6 +204,7 @@ input::-moz-selection, textarea::-moz-selection {
 
 #project_name {
   height: auto;
+  width: auto;
 }
 
 p {

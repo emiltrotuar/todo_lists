@@ -1,19 +1,18 @@
-.draggable id=projectId
-  .prj_actions
-    img alt='Notepad' border='0' height='12' src='/assets/notepad.png'
-    if isEditing
-      p.name = input value=name insert-newline='doneEditing' escape-press='cancelEditing'
-    else
-      p.name = name
-    img click='edit' border='0'  height='16' src='/assets/edit.png'
-    img click='removeProject' border='0' height='16' src='/assets/del.png'
-  .controls.input-group
-    if view.unFolded
-      button.fold.btn.btn-info.btn-lg{action 'toggleList' target='view'}
-        span.glyphicon.glyphicon-minus
-    else
-      button.unfold.btn.btn-info.btn-lg{action 'toggleList' target='view'}
-        span.glyphicon.glyphicon-plus
-    = input class='task_input form-control' placeholder="Start typing here to create task..." value=newTitle insert-newline='createTask'
-    button.addbutt.btn.btn-success click='createTask' Create Task
-  .task_list = partial 'tasks'
+.prj_actions
+  img alt='Notepad' border='0' height='12' src='/assets/notepad.png'
+  if isEditing
+    p.name = input value=name insert-newline='doneEditing' escape-press='cancelEditing'
+  else
+    p.name = name
+  img click='edit' border='0'  height='16' src='/assets/edit.png'
+  img click='removeProject' border='0' height='16' src='/assets/del.png'
+.controls.input-group
+  if view.unFolded
+    span.fold.btn.btn-info.btn-sm{action 'toggleList' target='view'}
+      span.glyphicon.glyphicon-minus
+  else
+    span.fold.btn.btn-info.btn-sm{action 'toggleList' target='view'}
+      span.glyphicon.glyphicon-plus
+  = input class='task_input form-control' placeholder="Start typing here to create task..." value=newTitle insert-newline='createTask'
+  span.btn.btn-success click='createTask' Create Task
+partial 'tasks'

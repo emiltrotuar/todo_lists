@@ -1,0 +1,4 @@
+form submit="loginUser"
+  p: input type='email' name='email' placeholder='email'
+  p: input type='password' name='password' placeholder='password'
+  p: input type='submit'

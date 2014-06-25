@@ -1,5 +1,9 @@
 class TodoLists.TaskController extends Ember.ObjectController
   isEditing: false
+  tmpName: null
+
+  taskId: ~>
+    "task_#{@id}"
 
   actions:
     removeTask: ->
@@ -8,7 +12,14 @@ class TodoLists.TaskController extends Ember.ObjectController
 
     edit: ->
       @set 'isEditing', true
+      @tmpName = @name
 
     doneEditing: ->
       @set 'isEditing', false
       @content.save()
+      @tmpName = null
+
+    cancelEditing: ->
+      @set 'isEditing', false
+      @name = @tmpName
+      @tmpName = null
