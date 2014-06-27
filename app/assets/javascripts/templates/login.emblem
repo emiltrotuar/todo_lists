@@ -1,4 +1,6 @@
-form submit="loginUser"
-  p: input type='email' name='email' placeholder='email'
-  p: input type='password' name='password' placeholder='password'
-  p: input type='submit'
+div align='center'
+  #hidden_button click='toggleForm'
+  form#login_form submit="loginUser"
+    input type='email' name='email' placeholder='email'
+    input type='password' name='password' placeholder='password'
+    input#login_submit type='submit'

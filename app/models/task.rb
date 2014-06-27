@@ -7,6 +7,6 @@ class Task
   field :done,     type: Boolean, default: false
 
   belongs_to :project
-  orderable base: 0
+  orderable scope: :project, base: 0
   default_scope ->{ order_by(:position.asc) }
 end

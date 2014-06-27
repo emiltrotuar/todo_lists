@@ -1,6 +1,9 @@
 class TodoLists.LoginController extends Ember.ObjectController
   
   actions:
+    toggleForm: ->
+      $("#login_form").slideToggle "slow"
+
     loginUser: ->
       formElements = $("form").serializeArray()
       params = {}

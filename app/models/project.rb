@@ -8,6 +8,6 @@ class Project
   has_many :tasks, dependent: :delete
   belongs_to :user
 
-  orderable base: 0
+  orderable scope: :user, base: 0
   default_scope ->{ order_by(:position.asc) }
 end

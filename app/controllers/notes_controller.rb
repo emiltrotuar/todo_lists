@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   respond_to :json
-
-  # skip_before_action :verify_authenticity_token, only: :create
+  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   # GET /notes
   # GET /notes.json
@@ -17,31 +17,10 @@ class NotesController < ApplicationController
     respond_with @note
   end
 
-  # PUT /notes/1
-  # PUT /notes/1.json
-  def update
-    @note = Note.find(params[:id])
-
-    respond_to do |format|
-      if @note.update_attributes(params[:note])
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /notes/1
   # DELETE /notes/1.json
-  def destroy
-    @note = Note.find(params[:id])
-    @note.destroy
-
-    respond_to do |format|
-      format.html { redirect_to notes_url }
-      format.json { head :no_content }
-    end
+   def destroy
+    note = Note.find(params[:id])
+    head :ok if note.delete
   end
 end

@@ -1,0 +1,3 @@
+li 
+  span = content.content
+  span.glyphicon.glyphicon-remove click='removeNote'

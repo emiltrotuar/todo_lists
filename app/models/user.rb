@@ -37,6 +37,7 @@ class User
   # field :locked_at,       type: Time
 
   has_many :projects, dependent: :destroy
+  # has_many :notes,    dependent: :destroy
 
   before_save :ensure_authentication_token
 

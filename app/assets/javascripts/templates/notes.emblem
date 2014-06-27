@@ -1,0 +1,4 @@
+link-to "projects" | projects
+ul
+  each note in model
+    render 'note' note

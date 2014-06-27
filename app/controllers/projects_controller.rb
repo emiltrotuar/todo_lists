@@ -1,16 +1,17 @@
 class ProjectsController < ApplicationController
   respond_to :json
   before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def index
-    projects = current_user.projects
+    projects = current_projects
     respond_with projects
   end
 
   def create
-    project = Project.new(name: params[:project][:name])
+    project = current_projects.create!(name: params[:project][:name])
     project.move_to :bottom
-    respond_with project if project.save
+    respond_with project
   end
 
   def update
@@ -25,9 +26,9 @@ class ProjectsController < ApplicationController
   end
 
   def sort
-    @project = Project.find(params[:prj_id])
-    @tasks = @project.tasks
-    @tasks.each do |task|
+    project = current_projects.find(params[:prj_id])
+    tasks = project.tasks
+    tasks.each do |task|
       task.position = params['task'].index(task.id.to_s)
       task.save
     end
@@ -35,8 +36,8 @@ class ProjectsController < ApplicationController
   end
 
   def sortp
-    @projects = Project.all
-    @projects.each do |project|
+    projects = current_projects
+    projects.each do |project|
       project.position = params['project'].index(project.id.to_s)
       project.save
     end
@@ -44,11 +45,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
-    def correct_user
-      @project = current_projects.find_by_id(params[:id])
-      redirect_to root_url if @project.nil?
-    end
 
     def current_projects
       current_user.projects

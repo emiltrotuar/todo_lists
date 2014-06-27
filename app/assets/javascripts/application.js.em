@@ -29,7 +29,6 @@ Ember.Application.initializer
       success: (data) => application.authsuccess(data)
       error: (data)   => application.autherror(data)
 
-
 window.TodoLists = Ember.Application.create
   LOG_TRANSITIONS: true
   LOG_BINDINGS: true

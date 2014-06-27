@@ -1,3 +1,4 @@
 if TodoLists.authenticated
-  a click='signOut' sign out
+  div align='center'
+    #hidden_button click='signOut'
 outlet

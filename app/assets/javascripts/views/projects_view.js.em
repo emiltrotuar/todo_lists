@@ -1,4 +1,5 @@
 class TodoLists.ProjectsView extends Ember.View
+  classNames: ['sortable']
 
   didInsertElement: ->
     $(".sortable").sortable
