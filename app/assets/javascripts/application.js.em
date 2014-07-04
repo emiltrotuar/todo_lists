@@ -8,11 +8,15 @@
 #= require ember-data
 #= require localstorage_adapter
 #= require_self
+#= require fuse
+# require fuse.min
 #= require todo_lists
 
 Ember.Application.initializer
   name: 'authentication'
   initialize: (container, application) ->
+    application.rawNotes = Ember.A()
+    application.normalizedNotes = {}
     application.authentication = new Authentication
       csrf_token: $("meta[name='csrf-token']").attr('content')
     application.currentUser = null

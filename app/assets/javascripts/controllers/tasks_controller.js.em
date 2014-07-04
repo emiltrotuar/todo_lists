@@ -1,1 +1,0 @@
-class TodoLists.TasksController extends Ember.ArrayController
