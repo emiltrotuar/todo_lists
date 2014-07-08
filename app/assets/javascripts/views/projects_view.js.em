@@ -1,5 +1,5 @@
 class TodoLists.ProjectsView extends Ember.View
-  classNames: ['sortable']
+  classNames: ['sortable', 'projects']
 
   didInsertElement: ->
     $(".sortable").sortable
@@ -8,11 +8,8 @@ class TodoLists.ProjectsView extends Ember.View
       containment: "parent"
       items: '> .draggable'
       start: (event, ui) ->
-        unless ui.item.prev().length is 0
-          ui.item.css "left", ui.item.prev().offset().left + "px"
-        else
-          ui.item.css "left", ui.item.next().offset().left + "px"
-      update: (event, ui) ->
+        ui.item.css "left", ui.item.parent().offset().left + "px"
+      update: (event, ui) =>
         dt = $(".sortable").sortable "serialize",
           attribute: 'class'
           key: 'project[]'

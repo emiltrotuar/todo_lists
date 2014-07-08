@@ -4,3 +4,6 @@ class TodoLists.TaskView extends Ember.View
 
   taskId: ~>
     @controller.taskId
+
+  doubleClick: ->
+    @controller.send('edit')

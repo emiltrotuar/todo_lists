@@ -223,6 +223,7 @@ input::-moz-selection, textarea::-moz-selection {
 
 #new_project_form {
   width: 290px;
+  background-color: #FFF
 }
 
 .prj_actions {
@@ -252,8 +253,13 @@ input::-moz-selection, textarea::-moz-selection {
 }
 
 #project_name {
-  height: auto;
+  height: 33px;
   width: auto;
+}
+
+.projects {
+  width: 490px;
+  margin: 0 auto;
 }
 
 p {

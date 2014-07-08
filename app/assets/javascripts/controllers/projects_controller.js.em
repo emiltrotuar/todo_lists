@@ -8,6 +8,8 @@ class TodoLists.ProjectsController extends Ember.ArrayController
 
     createProject: ->
       name = @get('newTitle')
+      return if not name
+      name = @get('newTitle')
       np = @store.createRecord 'project',
             name: name
       np.save()
