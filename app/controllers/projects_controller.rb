@@ -4,8 +4,7 @@ class ProjectsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    projects = current_projects
-    respond_with projects
+    respond_with current_projects
   end
 
   def create
@@ -15,13 +14,13 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    project = Project.find(params[:id])
+    project = current_projects.find(params[:id])
     project.update_attributes!(name: params[:project][:name])
     head :no_content
   end
 
   def destroy
-    project = Project.find(params[:id])
+    project = current_projects.find(params[:id])
     head :ok if project.delete
   end
 
@@ -36,8 +35,7 @@ class ProjectsController < ApplicationController
   end
 
   def sortp
-    projects = current_projects
-    projects.each do |project|
+    current_projects.each do |project|
       project.position = params['project'].index(project.id.to_s)
       project.save
     end
@@ -46,7 +44,7 @@ class ProjectsController < ApplicationController
 
   private
 
-    def current_projects
-      current_user.projects
-    end
+  def current_projects
+    current_user.projects
+  end
 end

@@ -6,7 +6,7 @@ class @Authentication.Strategies.Token extends @Authentication.Strategies.Base
     return true
 
   headers: ->
-    $.extend super(), {'Authorization': "Token token=#{@params.token}"}
+    super
 
   method: ->
     'GET'

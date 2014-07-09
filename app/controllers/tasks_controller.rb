@@ -11,6 +11,8 @@ class TasksController < ApplicationController
   end
 
   def update
+    binding.pry
+    return unless user_signed_in?
     task = Task.find(params[:id])
     task.update_attributes!(name: params[:task][:name],
                             done: params[:task][:done])
@@ -18,6 +20,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    return unless user_signed_in?
     task = Task.find(params[:id])
     head :ok if task.delete
   end

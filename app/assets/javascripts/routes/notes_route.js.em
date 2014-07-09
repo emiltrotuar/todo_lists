@@ -1,7 +1,11 @@
 class TodoLists.NotesRoute extends Ember.Route
   
   model: ->
-    @store.find 'note'
+    @store.find('note').then ((notes) ->
+      TodoLists.authenticated = true
+      notes
+    ), =>
+      @transitionTo 'login'
 
   setupController: (controller, model) ->
     super controller, model

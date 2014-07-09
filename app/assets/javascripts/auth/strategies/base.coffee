@@ -4,15 +4,7 @@ class @Authentication.Strategies.Base
   constructor: (@authentication, @params = {}, @options = {}) ->
 
   authenticate: ->
-    validationResult = @validate(@params)
-    if validationResult == true
-      @authentication.triggerStarted()
-      @strategyLoading = true
-      $.ajax @ajaxSettings()
-    else
-      @strategyLoading = false
-      @errorCallback({responseJSON: validationResult}, 'error', null)
-    @
+    $.ajax @ajaxSettings()
 
   ajaxSettings: ->
     dataType: @dataType()
@@ -28,7 +20,7 @@ class @Authentication.Strategies.Base
 
   headers: ->
     'Content-Type':  "application/json; utf-8"
-    'token': @authentication.config.csrf_token
+    'X-CSRF-Token': @authentication.config.csrf_token
 
   method: ->
     throw 'Method `method` not implemented'
@@ -43,14 +35,7 @@ class @Authentication.Strategies.Base
     throw 'Method `validate` not implemented'
 
   successCallback: (data, textStatus, xhr) =>
-    @strategyLoading = false
-    @authentication.setAuthenticationToken xhr.getResponseHeader('x-authentication-token');
-    @authentication.triggerAuthenticated(data, @name)
     @options.success(data, textStatus, xhr) if @options and @options.success
 
   errorCallback: (xhr, textStatus, errorThrown) =>
-    @strategyLoading = false
-    error = xhr.responseJSON || textStatus
-    @authentication.removeAuthenticationToken()
-    @authentication.triggerError(error, @name)
     @options.error(xhr, textStatus, errorThrown) if @options and @options.error

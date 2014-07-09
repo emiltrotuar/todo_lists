@@ -13,7 +13,7 @@ class @Authentication.Strategies.Password extends @Authentication.Strategies.Bas
     return true
 
   headers: ->
-    $.extend super(), {'X-CSRF-Token' : @authentication.config.csrf_token}
+    super
 
   method: ->
     'POST'

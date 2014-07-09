@@ -5,6 +5,15 @@ class TodoLists.TaskController extends Ember.ObjectController
   taskId: ~>
     "task_#{@id}"
 
+  +computed done
+  isDone: (key, value) ->
+    if value is undefined
+      @done
+    else
+      @done = value
+      @content.save()
+      value
+
   actions:
     removeTask: ->
       @content.deleteRecord()

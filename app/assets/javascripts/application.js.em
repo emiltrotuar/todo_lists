@@ -27,8 +27,10 @@ Ember.Application.initializer
       application.authenticated = true
     application.unauthsuccess = (data) ->
       console.log data
+      application.authenticated = false
     application.autherror = (data) ->
       console.log data
+      application.authenticated = false
     application.authentication.start
       success: (data) => application.authsuccess(data)
       error: (data)   => application.autherror(data)

@@ -9,14 +9,11 @@ class @Authentication.Strategies.Unauthenticate extends @Authentication.Strategi
     JSON.stringify({})
 
   headers: ->
-    $.extend super(), {'X-CSRF-Token' : @authentication.config.csrf_token}
+    super
 
   url: ->
     '/users/sign_out.json'
 
   successCallback: (data, textStatus, xhr) ->
-    @strategyLoading = false
-    @authentication.removeAuthenticationToken()
-    @authentication.triggerUnauthenticated(data, @name)
     @options.success(data, textStatus, xhr) if @options and @options.success
     
