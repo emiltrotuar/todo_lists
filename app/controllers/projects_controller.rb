@@ -25,24 +25,29 @@ class ProjectsController < ApplicationController
   end
 
   def sort
+    array = params[:task]
     project = current_projects.find(params[:prj_id])
     tasks = project.tasks
     tasks.each do |task|
-      task.position = params['task'].index(task.id.to_s)
-      task.save
+      set_position task, array
     end
     render nothing: true
   end
 
   def sortp
+    array = params[:project]
     current_projects.each do |project|
-      project.position = params['project'].index(project.id.to_s)
-      project.save
+      set_position project, array
     end
     render nothing: true
   end
 
   private
+
+  def set_position item, array
+    item.position = array.index(item.id.to_s)
+    item.save
+  end
 
   def current_projects
     current_user.projects

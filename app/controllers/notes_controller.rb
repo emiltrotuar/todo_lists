@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   respond_to :json
   before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   # GET /notes
   # GET /notes.json

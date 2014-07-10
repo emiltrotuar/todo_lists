@@ -11,7 +11,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    binding.pry
     return unless user_signed_in?
     task = Task.find(params[:id])
     task.update_attributes!(name: params[:task][:name],
