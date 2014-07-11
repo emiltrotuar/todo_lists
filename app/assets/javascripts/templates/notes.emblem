@@ -1,4 +1,4 @@
-link-to "projects" | projects
+link-to 'projects' | projects
 fuzzy-search source=searchResults controller-i=this
 ul
   each note in model

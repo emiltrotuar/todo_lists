@@ -1,4 +1,4 @@
-link-to "notes" | notes
+link-to 'notes' | notes
 each project in model
   render 'project' project
 partial 'new_project'

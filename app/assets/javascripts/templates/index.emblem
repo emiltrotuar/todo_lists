@@ -1,0 +1,4 @@
+if TodoLists.authenticated
+  partial 'links'
+else
+  link-to 'login' | login

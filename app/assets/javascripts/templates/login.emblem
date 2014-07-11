@@ -1,6 +1,9 @@
-div align='center'
-  #hidden_button click='toggleForm'
-  form#login_form submit="loginUser"
-    input type='email' name='email' placeholder='email'
-    input type='password' name='password' placeholder='password'
-    input#login_submit type='submit'
+unless TodoLists.authenticated
+  div align='center'
+    #hidden_button.sign_in click='toggleForm'
+    form#login_form submit="loginUser"
+      input type='email' name='email' placeholder='email'
+      input type='password' name='password' placeholder='password'
+      input#login_submit type='submit'
+else
+  partial 'links'
