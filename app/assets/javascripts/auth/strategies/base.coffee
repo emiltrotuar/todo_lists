@@ -20,6 +20,7 @@ class @Authentication.Strategies.Base
 
   headers: ->
     'Content-Type':  "application/json; utf-8"
+    'X-TL-Client': 'application'
     'X-CSRF-Token': @authentication.config.csrf_token
 
   method: ->
