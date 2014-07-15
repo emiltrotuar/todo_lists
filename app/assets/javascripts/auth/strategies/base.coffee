@@ -1,6 +1,4 @@
 class @Authentication.Strategies.Base
-  strategyLoading: null
-
   constructor: (@authentication, @params = {}, @options = {}) ->
 
   authenticate: ->

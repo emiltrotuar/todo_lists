@@ -25,24 +25,3 @@ class @Authentication
     client = new clientClass(this, params, options)
     client.name = clientName
     client.request()
-
-  triggerStarted: ->
-    $(document).trigger 'started.authentication'
-
-  triggerAuthenticated: (data, strategy) ->
-    $(document).trigger 'authenticated.authentication', {strategy: strategy, data: data}
-
-  triggerConfirmation: (data, strategy) ->
-    $(document).trigger 'confirmation.authentication', {strategy: strategy, data: data}
-
-  triggerError: (data, strategy) ->
-    $(document).trigger 'error.authentication', {strategy: strategy, data: data}
-
-  triggerUnauthenticated: (data, strategy) ->
-    $(document).trigger 'unauthenticated.authentication', {strategy: strategy, data: data}
-
-  triggerClientSuccess: (data, client) ->
-    $(document).trigger 'clientsuccess.authentication', {client: client, data: data}
-
-  triggerClientFailure: (data, client) ->
-    $(document).trigger 'clientfailure.authentication', {client: client, data: data}

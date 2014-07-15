@@ -31,9 +31,10 @@ Ember.Application.initializer
     application.autherror = (data) ->
       console.log data
       application.authenticated = false
-    application.authentication.start
-      success: (data) => application.authsuccess(data)
-      error: (data)   => application.autherror(data)
+    if window.tlAuthenticated
+      application.authentication.start
+        success: (data) => application.authsuccess(data)
+        error: (data)   => application.autherror(data)
 
 window.TodoLists = Ember.Application.create
   LOG_TRANSITIONS: true

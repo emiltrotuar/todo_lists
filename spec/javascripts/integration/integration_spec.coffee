@@ -41,7 +41,7 @@ describe 'Integration', ->
         responseText: mockData
 
       visit('projects').then ->
-        find('#projects .draggable').each (pindex) ->
+        find('.projects .draggable').each (pindex) ->
           item = $(@).find('.prj_actions p.name').html()
           expect(item).toMatch mockData.projects[pindex].name
           $(@).find('.task_list tr').each (tindex) ->
@@ -61,8 +61,9 @@ describe 'Integration', ->
         url: "/projects"
         responseTime: 0
         responseText: proData
-      fillIn '#new_project', 'dock123'
-      click('#create_project').then ->
+      click(':contains("New Project")')
+      fillIn('#project_name', 'dock123')
+      click(':contains("Create project")').then ->
         project = find('.prj_actions p.name:contains("dock123")').length
         expect(project).toBe 1
         $.mockjaxClear crp
