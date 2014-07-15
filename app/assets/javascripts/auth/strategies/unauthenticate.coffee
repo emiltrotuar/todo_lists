@@ -13,7 +13,4 @@ class @Authentication.Strategies.Unauthenticate extends @Authentication.Strategi
 
   url: ->
     '/users/sign_out.json'
-
-  successCallback: (data, textStatus, xhr) ->
-    @options.success(data, textStatus, xhr) if @options and @options.success
     

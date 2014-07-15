@@ -2,7 +2,7 @@ class @Authentication
   @Strategies = {}
 
   config:
-    csrf_token: null
+    csrfToken: null
 
   constructor: (config) ->
     $.extend @config, config if config

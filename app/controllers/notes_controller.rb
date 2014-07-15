@@ -15,6 +15,7 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = current_user.notes.create!(content: params[:note][:content])
+    headers['X-TL-Token'] = current_user.reset_extension_token
     env['rack.session.options'][:skip] = true
     respond_with @note
   end
@@ -34,7 +35,7 @@ class NotesController < ApplicationController
 
   def authenticate_user_from_token!
     token = request.headers['X-TL-Token']
-    user = token && User.find_by(authentication_token: token.to_s)
+    user = token && User.find_by(extension_token: token.to_s)
 
     if user
       sign_in user, store: false

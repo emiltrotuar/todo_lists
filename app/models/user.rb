@@ -23,7 +23,7 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  field :authentication_token, type: String
+  field :extension_token, type: String
 
   ## Confirmable
   # field :confirmation_token,   type: String
@@ -39,20 +39,26 @@ class User
   has_many :projects, dependent: :delete
   has_many :notes,    dependent: :delete
 
-  before_save :ensure_authentication_token
+  before_save :ensure_extension_token
 
-  def ensure_authentication_token
-    if authentication_token.blank?
-      self.authentication_token = generate_authentication_token
+  def ensure_extension_token
+    if extension_token.blank?
+      self.extension_token = generate_extension_token
     end
+  end
+
+  def reset_extension_token
+    self.extension_token = generate_extension_token
+    save validate: false
+    extension_token
   end
 
   private
 
-  def generate_authentication_token
+  def generate_extension_token
     loop do
       token = Devise.friendly_token
-      break token unless User.where(authentication_token: token).first
+      break token unless User.where(extension_token: token).first
     end
   end
 end

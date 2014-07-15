@@ -21,7 +21,7 @@ class @Authentication.Strategies.Base
   headers: ->
     'Content-Type':  "application/json; utf-8"
     'X-TL-Client': 'application'
-    'X-CSRF-Token': @authentication.config.csrf_token
+    'X-CSRF-Token': @authentication.config.csrfToken
 
   method: ->
     throw 'Method `method` not implemented'
@@ -36,6 +36,7 @@ class @Authentication.Strategies.Base
     throw 'Method `validate` not implemented'
 
   successCallback: (data, textStatus, xhr) =>
+    @authentication.config.csrfToken = xhr.getResponseHeader('X-CSRF-Token')
     @options.success(data, textStatus, xhr) if @options and @options.success
 
   errorCallback: (xhr, textStatus, errorThrown) =>

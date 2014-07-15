@@ -18,7 +18,7 @@ Ember.Application.initializer
     application.rawNotes = Ember.A()
     application.normalizedNotes = {}
     application.authentication = new Authentication
-      csrf_token: $("meta[name='csrf-token']").attr('content')
+      csrfToken: $("meta[name='csrf-token']").attr('content')
     application.currentUser = null
     application.authenticated = false
 
