@@ -1,11 +1,11 @@
 .prj_actions
   img alt='Notepad' border='0' height='12' src='/assets/notepad.png'
   if isEditing
-    p.name = input value=name insert-newline='doneEditing' escape-press='cancelEditing'
+    = input value=name insert-newline='doneEditing' escape-press='cancelEditing' class='project_name_input'
   else
     p.name = name
-  img click='edit' border='0'  height='16' src='/assets/edit.png'
-  img click='removeProject' border='0' height='16' src='/assets/del.png'
+  img.edit_project click='edit' border='0'  height='16' src='/assets/edit.png'
+  img.remove_project click='removeProject' border='0' height='16' src='/assets/del.png'
 .controls.input-group
   if view.unFolded
     span.fold.btn.btn-info.btn-sm{action 'toggleList' target='view'}

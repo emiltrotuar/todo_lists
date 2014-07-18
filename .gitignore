@@ -24,6 +24,7 @@ config/deploy.rb
 
 public/assets
 vendor/bundle
+vendor/assets
 
 # Ignore application configuration
 /config/secrets.yml

@@ -3,103 +3,93 @@ describe 'Integration', ->
   describe 'Project', ->
 
     mockTask1 =
-      id: '111'
-      name: 'moket'
-      project: '00000'
+      id: 't1'
+      name: 'task1'
+      project: 'p1'
 
     mockTask2 =
-      id: '222'
-      name: 'poket'
-      project: '00000'
-
-    mockProject1 = 
-      id: '00000'
-      name: 'abc'
-      tasks: [mockTask1, mockTask2]
+      id: 't2'
+      name: 'task2'
+      project: 'p1'
 
     mockTask3 =
-      id: '333'
-      name: 'rocket'
-      project: '11111'
+      id: 't3'
+      name: 'task3'
+      project: 'p2'
 
     mockTask4 =
-      id: '444'
-      name: 'soket'
-      project: '11111'
+      id: 't4'
+      name: 'task4'
+      project: 'p2'
 
-    mockProject2 = 
-      id: '11111'
-      name: 'xyz'
-      tasks: [mockTask3, mockTask4]
+    mockProject1 =
+      id: "p1"
+      name: "one"
+      tasks: [
+        mockTask1
+        mockTask2
+      ]
 
-    mockData = { projects: [mockProject1, mockProject2] }
+    mockProject2 =
+      id: "p2"
+      name: "two"
+      tasks: [
+        mockTask3
+        mockTask4
+      ]
 
-    it 'fetches list of mock projects', (done) ->
-      idx = $.mockjax
-        url: "/projects"
-        responseTime: 0
-        responseText: mockData
+    FIXTURES =
+      project:
+        records: [
+          mockProject1
+          mockProject2
+        ]
 
+    localStorage.setItem('todo-lists', JSON.stringify(FIXTURES));
+
+    it 'fetches projects from local storage', (done) ->
       visit('projects').then ->
+        projects = FIXTURES.project.records
         find('.projects .draggable').each (pindex) ->
           item = $(@).find('.prj_actions p.name').html()
-          expect(item).toMatch mockData.projects[pindex].name
+          expect(item).toMatch projects[pindex].name
           $(@).find('.task_list tr').each (tindex) ->
             item = $(@).find('.task_content').html()
-            expect(item).toMatch mockData.projects[pindex].tasks[tindex].name
-            $.mockjaxClear idx
+            expect(item).toMatch projects[pindex].tasks[tindex].name
             if pindex is 1 and tindex is 1
               done()
 
-    it 'adds new project', (done) ->
-      proData =
-        project:
-          id: "539b0425776d001993090000"
-          name: "dock123"
-          tasks: []
-      crp = $.mockjax
-        url: "/projects"
-        responseTime: 0
-        responseText: proData
+    it 'creates new project', (done) ->
       click(':contains("New Project")')
       fillIn('#project_name', 'dock123')
       click(':contains("Create project")').then ->
         project = find('.prj_actions p.name:contains("dock123")').length
         expect(project).toBe 1
-        $.mockjaxClear crp
         done()
 
-  #   it 'does not allow to add already existing project', ->
-  #     project = 'test12'
-  #     already = project
-  #     fillIn '#new_project', project
-  #     click('button:contains("Create project")')
-  #     fillIn '#new_project', already
-  #     click('button:contains("Create project")').then ->
-  #       project = find("li span:contains(#{project})").length
-  #       expect(project).toBe 1
-  #       alreadyNotification = find('notification_popup').length
-  #       expect alreadyNotification toBe 1
-  #       done()
+    it 'updates project name', (done) ->
+      edpi = -> find('.project_name_input').length
+      click('.edit_project:eq("2")').then ->
+        expect(edpi()).toBe 1
+      fillIn('.project_name_input','some other name')
+      keyEvent('.project_name_input', 'keyup.ember', 13).then ->
+        expect(edpi()).toBe 0
+        done()
 
-  #   it 'cancels editing project name', (done) ->
-  #     click(':contains("edit")').then ->
-  #       editProject = find('.edit_project').length
-  #       expect(editProject).toBe 1
-  #     fillIn('#edit_item', 'some_other_name')
-  #     click('button:contains("done")').then ->
-  #       expect(newProjectName).toBe 'some_other_name'
-  #       done()
+    it 'deletes project', (done) ->
+      project = -> $('.draggable .name:contains("some other name")').eq('-1').length
+      expect(project()).toBe 1
+      click('.remove_project:eq("-1")')
+      andThen ->
+        expect(project()).toBe 0
+        done()
 
-  # describe 'Task', ->
+  describe 'Task', ->
 
-  #   it 'creates task', (done) ->
-  #     fillIn '#new_task', 'test123'
-  #     click('#create_task').then ->
-  #       task = find('li span:contains("test123")').length
-  #       expect(project).toBe 1
-  #       done()
-
-  #   it 'edits task name', ->
-  #     click ':contains("edit")'
-  #     expect(task).toBe true
+    it 'creates task', (done) ->
+      fillIn '.task_input', 'test123'
+      task = -> find('p:contains("test123")').length
+      expect(task()).toBe 0
+      click('span:contains("Create Task"):eq("1")').then ->
+        expect(task()).toBe 1
+        done()

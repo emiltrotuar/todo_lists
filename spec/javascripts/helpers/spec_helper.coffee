@@ -27,9 +27,18 @@ Ember.Test.adapter = Ember.Test.Adapter.create()
 
 TodoLists.rootElement = '#ember-testing'
 
-# TodoLists.setupForTesting();
 TodoLists.Router.reopen
   location: 'none'
-    
-TodoLists.injectTestHelpers()
 
+TodoLists.ProjectAdapter = DS.LSAdapter.extend
+  namespace: 'todo-lists'
+
+  findAll: (store, type) ->
+    namespace = @_namespaceForType(type)
+    results = []
+    for project in namespace.records
+      results.push Ember.copy(project)
+    Ember.RSVP.resolve
+      projects: results
+
+TodoLists.injectTestHelpers()

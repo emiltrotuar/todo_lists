@@ -13,4 +13,6 @@ class TodoLists.ProjectsController extends Ember.ArrayController
       np = @store.createRecord 'project',
             name: name
       np.save()
-      @set 'newTitle', ''
+      @newTitle = ''
+      @isButtonNew = true
+      false
