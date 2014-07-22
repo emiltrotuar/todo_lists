@@ -2,10 +2,10 @@ td with='50px' align='center'
   = input type='checkbox' checked=isDone
 td with='333px'
   if isEditing
-    p.task_content = input value=name insert-newline='doneEditing' escape-press='cancelEditing'
+    p.task_content = input value=name insert-newline='doneEditing' escape-press='cancelEditing' class='task_name_input'
   else
     p.task_content = name
 td with='90px' align='center'
   img.reorder border='0' height='23' src='/assets/arrows.png'
-  img click='edit' border='0'  height='16' src='/assets/edit.png'
-  img click='removeTask' border='0' height='16' src='/assets/del.png'
+  img.edit_task click='edit' border='0'  height='16' src='/assets/edit.png'
+  img.remove_task click='removeTask' border='0' height='16' src='/assets/del.png'

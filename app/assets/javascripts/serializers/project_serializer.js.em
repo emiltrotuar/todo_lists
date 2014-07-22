@@ -1,4 +1,4 @@
-TodoLists.ProjectSerializer = DS.RESTSerializer.extend
+class TodoLists.ProjectSerializer extends DS.RESTSerializer
 
   extractArray: (store, type, payload, id, requestType) ->
     tasks = []

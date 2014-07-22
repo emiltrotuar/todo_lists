@@ -1,4 +1,4 @@
-TodoLists.NoteSerializer = DS.RESTSerializer.extend
+class TodoLists.NoteSerializer extends DS.RESTSerializer
 
   extractArray: (store, type, payload, id, requestType) ->
     TodoLists.rawNotes = payload.notes

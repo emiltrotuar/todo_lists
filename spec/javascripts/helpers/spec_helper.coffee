@@ -31,7 +31,7 @@ TodoLists.Router.reopen
   location: 'none'
 
 TodoLists.ProjectAdapter = DS.LSAdapter.extend
-  namespace: 'todo-lists'
+  namespace: 'todo-lists-test'
 
   findAll: (store, type) ->
     namespace = @_namespaceForType(type)
@@ -40,5 +40,8 @@ TodoLists.ProjectAdapter = DS.LSAdapter.extend
       results.push Ember.copy(project)
     Ember.RSVP.resolve
       projects: results
+
+TodoLists.TaskAdapter = DS.LSAdapter.extend
+  namespace: 'todo-lists-test'
 
 TodoLists.injectTestHelpers()

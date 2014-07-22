@@ -31,4 +31,7 @@ class TodoLists.ProjectController extends Ember.ObjectController
         name: name
         project: @.get('content')
       nt.save()
+      # nt.save().then (task) =>
+      #   @content.get('tasks').addRecord(task)
+      #   @content.save()
       @set 'newTitle', ''
