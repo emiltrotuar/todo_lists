@@ -12,3 +12,9 @@ class TodoLists.ProjectSerializer extends DS.RESTSerializer
     payload = { projects: payload.projects, tasks: tasks }
 
     super store, type, payload, id, requestType
+
+  serializeHasMany: (record, json, relationship) ->
+    key = relationship.key
+    relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship)
+    json[key] = record.get(key).mapBy("id")  if relationshipType is "manyToNone" or relationshipType is "manyToMany" or relationshipType is "manyToOne"
+    return

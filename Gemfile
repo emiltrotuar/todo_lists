@@ -24,9 +24,12 @@ group :assets do
 end
 
 group :test do
-  gem 'jasmine'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+end
+
+group :development, :test do
+  gem 'jasmine'
 end
 
 group :development do

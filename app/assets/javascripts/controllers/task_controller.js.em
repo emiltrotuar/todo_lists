@@ -16,11 +16,11 @@ class TodoLists.TaskController extends Ember.ObjectController
 
   actions:
     removeTask: ->
-      # project = @content.get('project')
-      # project.get('tasks').removeRecord(@content)
-      # project.save()
+      project = @content.get('project')
       @content.deleteRecord()
-      @content.save()
+      @content.save().then (task) ->
+        project.get('tasks').removeRecord(task)
+        project.save()
 
     edit: ->
       @set 'isEditing', true
