@@ -1,4 +1,4 @@
-class TodoLists.ProjectAdapter extends DS.LSAdapter
+class TodoLists.ProjectAdapterLS extends DS.LSAdapter
   namespace: 'todo-lists'
 
   findAll: (store, type) ->

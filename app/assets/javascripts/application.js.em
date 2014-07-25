@@ -15,6 +15,10 @@
 Ember.Application.initializer
   name: 'authentication'
   initialize: (container, application) ->
+    application.register('adapter:application', DS.ActiveModelAdapter)
+    application.register('switcher:main', TodoLists.Switcher)
+    application.inject('controller', 'switcher', 'switcher:main')
+
     application.rawNotes = Ember.A()
     application.normalizedNotes = {}
     application.authentication = new Authentication
