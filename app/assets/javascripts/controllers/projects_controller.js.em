@@ -1,4 +1,4 @@
-class TodoLists.ProjectsController extends Ember.ArrayController
+class TodoLists.ProjectsControllerAM extends Ember.ArrayController
   isButtonNew: true
 
   actions:
@@ -9,10 +9,28 @@ class TodoLists.ProjectsController extends Ember.ArrayController
     createProject: ->
       name = @get('newTitle')
       return if not name
-      name = @get('newTitle')
       np = @store.createRecord 'project',
             name: name
-      np.save()
+      np.save().then ((project) ->
+        console.log project
+      ), (reason) =>
+        console.log reason
+        @switcher.switchTo('localstorage')
+      @newTitle = ''
+      @isButtonNew = true
+      false
+
+class TodoLists.ProjectsControllerLS extends TodoLists.ProjectsControllerAM
+  actions:
+    createProject: ->
+      name = @get('newTitle')
+      return if not name
+      np = @store.createRecord 'project',
+            name: name
+      np.save().then ((project) ->
+        console.log project
+      ), (reason) =>
+        console.log reason
       @newTitle = ''
       @isButtonNew = true
       false

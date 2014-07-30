@@ -16,8 +16,18 @@ Ember.Application.initializer
   name: 'authentication'
   initialize: (container, application) ->
     application.register('adapter:application', DS.ActiveModelAdapter)
+
+    application.register('controller:projects', TodoLists.ProjectsControllerAM)
+    application.register('controller:project', TodoLists.ProjectControllerAM)
+    application.register('controller:task', TodoLists.TaskControllerAM)
+
     application.register('switcher:main', TodoLists.Switcher)
     application.inject('controller', 'switcher', 'switcher:main')
+
+    application.register('synchronizer:main', TodoLists.Synchronizer)
+    application.inject('synchronizer:main', 'store', 'store:main')
+    application.inject('controller', 'synchronizer', 'synchronizer:main')
+
 
     application.rawNotes = Ember.A()
     application.normalizedNotes = {}
@@ -47,3 +57,6 @@ window.TodoLists = Ember.Application.create
 Ember.TextField.reopen
   didInsertElement: ->
     @.$().focus()
+
+DS.LSAdapter.reopen
+  namespace: 'todo-lists'

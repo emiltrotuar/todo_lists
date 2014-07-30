@@ -1,4 +1,4 @@
-class TodoLists.TaskController extends Ember.ObjectController
+class TodoLists.TaskControllerAM extends Ember.ObjectController
   isEditing: false
   tmpName: null
 
@@ -33,8 +33,7 @@ class TodoLists.TaskController extends Ember.ObjectController
       @name = @tmpName
       @tmpName = null
 
-
-class TodoLists.TaskControllerLS extends TodoLists.TaskController
+class TodoLists.TaskControllerLS extends TodoLists.TaskControllerAM
   actions:
     removeTask: ->
       project = @content.get('project')

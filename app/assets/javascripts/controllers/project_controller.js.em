@@ -1,4 +1,4 @@
-class TodoLists.ProjectController extends Ember.ObjectController
+class TodoLists.ProjectControllerAM extends Ember.ObjectController
   isEditing: false
   tmpName: null
 
@@ -27,16 +27,18 @@ class TodoLists.ProjectController extends Ember.ObjectController
     createTask: ->
       name = @get('newTitle')
       return if not name
-      @set 'newTitle', ''
       nt = @store.createRecord 'task',
         name: name
         project: @.get('content')
-      nt.save().then => , (reason) =>
+      nt.save().then ((task) ->
+        console.log task
+      ), (reason) =>
         console.log reason
         @switcher.switchTo('localstorage')
+        @synchronizer.sync()
+      @newTitle = ''
 
-
-class TodoLists.ProjectControllerLS extends TodoLists.ProjectController
+class TodoLists.ProjectControllerLS extends TodoLists.ProjectControllerAM
   actions:
     removeProject: ->
       @content.tasks.toArray().forEach (task) ->
@@ -45,9 +47,14 @@ class TodoLists.ProjectControllerLS extends TodoLists.ProjectController
       super()
 
     createTask: ->
-      super().then ((task) =>
+      name = @get('newTitle')
+      return if not name
+      nt = @store.createRecord 'task',
+        name: name
+        project: @.get('content')
+      nt.save().then ((task) =>
         @content.get('tasks').addRecord(task)
         @content.save()
-      ), (reason) =>
+      ), (reason) ->
         console.log reason
-        # retry()
+      @newTitle = ''

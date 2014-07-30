@@ -8,6 +8,5 @@
 #= require_tree ./serializers
 #= require_tree ./adapters
 #= require store
-#= require adapter
 #= require switcher
 #= require router
