@@ -9,4 +9,5 @@
 #= require_tree ./adapters
 #= require store
 #= require switcher
+#= require synchronizer
 #= require router

@@ -14,7 +14,6 @@ gem 'jquery-cookie-rails'
 gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 gem 'mongoid_orderable'
 gem 'rails'
-gem 'underscore_extensions'
 gem 'underscore-rails'
 
 group :assets do
