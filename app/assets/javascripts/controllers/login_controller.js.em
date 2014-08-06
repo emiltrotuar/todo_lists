@@ -13,11 +13,10 @@ class TodoLists.LoginController extends Ember.ObjectController
         user:
           email: params.email
           password: params.password
-      options =
-        error: (data) =>
-          console.log event, data
-        success: (data) =>
-          console.log event, data
-          TodoLists.authenticated = true
-          @transitionToRoute 'projects'
-      TodoLists.authentication.authenticate 'password', params, options
+      success = (data) =>
+        console.log event, data
+        TodoLists.authenticated = true
+        @transitionToRoute 'projects'
+      error = (data) =>
+        console.log event, data
+      TodoLists.authentication.authenticate('password', params).then success, error

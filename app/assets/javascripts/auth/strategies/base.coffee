@@ -1,5 +1,5 @@
 class @Authentication.Strategies.Base
-  constructor: (@authentication, @params = {}, @options = {}) ->
+  constructor: (@authentication, @defer, @params = {}, @options = {}) ->
 
   authenticate: ->
     $.ajax @ajaxSettings()
@@ -35,7 +35,9 @@ class @Authentication.Strategies.Base
 
   successCallback: (data, textStatus, xhr) =>
     @authentication.config.csrfToken = xhr.getResponseHeader('X-CSRF-Token')
-    @options.success(data, textStatus, xhr) if @options and @options.success
+    @options.success(data, textStatus, xhr) if @options.success
+    @defer.resolve(data, textStatus, xhr)
 
   errorCallback: (xhr, textStatus, errorThrown) =>
-    @options.error(xhr, textStatus, errorThrown) if @options and @options.error
+    @options.error(xhr, textStatus, errorThrown) if @options.error
+    @defer.reject(xhr, textStatus, errorThrown)
