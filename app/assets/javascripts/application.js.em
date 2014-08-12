@@ -2,7 +2,6 @@
 #= require jquery.ui.all
 #= require jquery.cookie
 #= require bootstrap
-#= require jquery
 #= require handlebars
 #= require ember
 #= require ember-data
