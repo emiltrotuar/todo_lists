@@ -15,8 +15,6 @@
 /tmp
 
 .jhw-cache/
-todo.sublime-project
-todo.sublime-workspace
 
 Capfile
 config/deploy/
@@ -27,3 +25,4 @@ vendor/bundle
 
 # Ignore application configuration
 /config/application.yml
+.idea/
