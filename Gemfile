@@ -3,7 +3,7 @@ ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 gem 'acts_as_list'
-gem 'bootstrap-sass', '2.1'
+gem 'bootstrap-sass', '3.4.1'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'doorkeeper', '~> 0.7.0'
 gem 'faker', '1.0.1'
