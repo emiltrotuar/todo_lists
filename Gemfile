@@ -7,7 +7,7 @@ gem 'bootstrap-sass', '2.1'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'doorkeeper', '~> 0.7.0'
 gem 'faker', '1.0.1'
-gem 'jquery-rails', '2.0.2'
+gem 'jquery-rails', '2.3.0'
 gem 'jquery-ui-rails', '~> 4.0.3'
 gem 'figaro'
 
